@@ -1000,6 +1000,3 @@ findings Collection {#h.lt8ipmvo5woa .c20}
 -   NCSF [array]: This array will list which controls in the NICE
     Cybersecurity Framework are applicable to the finding identified.
     This is a more universal standard than NIST 800-53
-
-[[a]](#cmnt_ref1)+kenneth.vrooman@beta.dhs.gov This is as specific as we
-get with regards to identifying the vulnerability location
