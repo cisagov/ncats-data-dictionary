@@ -19,7 +19,7 @@ following NoSQL MongoDB databases:
 
 This information is organized by database and collection (table).
 
-[cyhy Database](#cyhy-database)
+[cyhy Database](#cyhy-database:)
 
 [cves Collection](#h.apcsjqsir0bk)
 
