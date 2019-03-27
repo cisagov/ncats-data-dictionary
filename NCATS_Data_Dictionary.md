@@ -23,11 +23,11 @@ This information is organized by database and collection (table).
 
 [cves Collection](#cves-collection)
 
-[host\_scans Collection](#host\_scans-collection)
+[host\_scans Collection](#host_scanscollection)
 
 [hosts Collection](#host_scanscollection)
 
-[places Collection](#h.mzrl7zl1buq4)
+[places Collection](#hostscollection)
 
 [port\_scans Collection](#h.uyx91jau9a12)
 
@@ -171,7 +171,7 @@ CyHy stakeholders.
 -   “RUNNING” - Currently being scanned
 -   “DONE” - Latest scan has completed
 
-places Collection {#h.mzrl7zl1buq4 .c20}
+places Collection
 -----------------
 
 The data in this collection is derived from the “Government Units” and
@@ -198,7 +198,7 @@ The data in this collection is derived from the “Government Units” and
     the state where this place is
 -   state\_name [string]: Full name of the state where this place is
 
-port\_scans Collection {#h.uyx91jau9a12 .c20}
+port\_scans Collection
 ----------------------
 
 The data in this collection is derived from IP addresses supplied by the
@@ -244,7 +244,7 @@ creation process.
 -   snapshot\_oid [ObjectId]: Snapshot that was the basis for this Cyber
     Hygiene report (value is null for Cyber Exposure scorecards)
 
-requests Collection {#h.17e48hdereq9 .c20}
+requests Collection
 -------------------
 
 The data in this collection is derived from data supplied by the CyHy
@@ -320,7 +320,7 @@ stakeholders.
 -   start [string]: Time of day when scanning is allowed to start
 -   duration [integer]: Duration of scan window, in hours
 
-snapshots Collection {#h.l980tmvl2rzr .c20}
+snapshots Collection
 --------------------
 
 The data in this collection is derived from IP addresses supplied by the
@@ -362,7 +362,7 @@ CyHy stakeholders.
 -   world [dictionary]: DEPRECATED; metrics about the overall state of
     CyHy at the time this snapshot was generated
 
-tallies Collection {#h.ajapc322d6th .c9}
+tallies Collection
 ------------------
 
 The data in this collection is derived from IP addresses supplied by the
@@ -388,7 +388,7 @@ CyHy stakeholders.
 -   last\_change [ISO date]: Timestamp of when this tally document was
     last updated
 
-tickets Collection {#h.8ebvbk7glftr .c26}
+tickets Collection
 ------------------
 
 The data in this collection is derived from IP addresses supplied by the
@@ -458,7 +458,7 @@ CyHy stakeholders.
 -   time\_opened [ISO date]: Timestamp when this ticket was opened
     (vulnerability was first detected)
 
-vuln\_scans Collection {#h.yr3f80azd8jd .c20}
+vuln\_scans Collection
 ----------------------
 
 The data in this collection is derived from IP addresses supplied by the
@@ -537,10 +537,10 @@ CyHy stakeholders.
 -   vuln\_publication\_date [ISO date]: Vulnerability publication date
 -   xref [string]: External reference
 
-scan Database: {#h.8p8z7vcs08gu .c23}
+scan Database:
 ==============
 
-certs Collection {#h.vkvlb4gapxkz .c20}
+certs Collection
 ----------------
 
 The data in this collection is derived from certificates collected by
@@ -582,7 +582,7 @@ for
     where this certificate can be used.  These are extracted from the
     subjects field.
 
-domains Collection {#h.qwt153c8i5hu .c20}
+domains Collection
 ------------------
 
 The data in this collection is derived from domains collected by our
@@ -606,7 +606,7 @@ for
 -   scan\_date [ISO date]: Timestamp when the domain was inserted in the
     database
 
-https\_scan Collection {#h.7yzwy0vl6wdl .c20}
+https\_scan Collection
 ----------------------
 
 The data in this collection is derived from domain names collected by
@@ -705,7 +705,7 @@ OR
     443 with an unexpired valid certificate for the hostname; can be
     True even if canonical\_url uses HTTP
 
-precerts Collection {#h.e3bxszywt6cz .c20}
+precerts Collection
 -------------------
 
 The data in this collection is derived from certificates collected by
@@ -747,7 +747,7 @@ for
     where this certificate can be used.  These are extracted from the
     subjects field.
 
-sslyze\_scan Collection {#h.jdvt2g4p7kc1 .c20}
+sslyze\_scan Collection
 -----------------------
 
 The data in this collection is derived from domain names collected by
@@ -822,7 +822,7 @@ for
 -   tlsv1\_2 [boolean]: True if TLS 1.2 is supported by
     scanned\_hostname
 
-trustymail Collection {#h.yqcj55euwwjs .c20}
+trustymail Collection
 ---------------------
 
 The data in this collection is derived from domain names collected by
@@ -908,7 +908,7 @@ for
     domain is syntactically correct, per [RFC
     4408](https://www.google.com/url?q=https://www.ietf.org/rfc/rfc4408.txt&sa=D&ust=1553612329855000)
 
-assessment Database: {#h.1xhfi3sik1o7 .c23}
+assessment Database:
 ====================
 
 rva Collection {#h.4ixfrma0cnea .c20}
@@ -962,7 +962,7 @@ rva Collection {#h.4ixfrma0cnea .c20}
 -   Stakeholder Id = TBD
 -   Testing Begin Date = Date when all testing begins
 
-findings Collection {#h.lt8ipmvo5woa .c20}
+findings Collection
 -------------------
 
 -    \_id: Unique key for DB to identify individual finding
