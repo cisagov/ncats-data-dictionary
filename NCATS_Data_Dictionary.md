@@ -25,7 +25,7 @@ This information is organized by database and collection (table).
 
 [host\_scans Collection](#host\_scans-collection)
 
-[hosts Collection](#h.w88pyenorwyp)
+[hosts Collection](#host_scanscollection)
 
 [places Collection](#h.mzrl7zl1buq4)
 
@@ -114,7 +114,7 @@ CyHy stakeholders.
 -   source [string]: Source of the scan (e.g. “nmap”)
 -   time [ISO date]: Timestamp when the scan occurred
 
-hosts Collection {#h.w88pyenorwyp .c20}
+hosts Collection
 ----------------
 
 The data in this collection is derived from IP addresses supplied by the
