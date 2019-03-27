@@ -25,48 +25,43 @@ This information is organized by database and collection (table).
 
 [host\_scans Collection](#host_scanscollection)
 
-[hosts Collection](#host_scanscollection)
+[hosts Collection](#hostcollection)
 
-[places Collection](#hostscollection)
+[places Collection](#placescollection)
 
-[port\_scans Collection](#h.uyx91jau9a12)
+[port\_scans Collection](#port_scanscollection)
 
-[reports Collection](#h.xtcuyt1km9iy)
+[reports Collection](#reportscollection)
 
-[requests Collection](#h.17e48hdereq9)
+[requests Collection](#requestscollection)
 
-[snapshots Collection](#h.l980tmvl2rzr)
+[snapshots Collection](#snapshotscollection)
 
-[tallies Collection](#h.ajapc322d6th)
+[tallies Collection](#talliescollection)
 
-[tickets Collection](#h.8ebvbk7glftr)
+[tickets Collection](#ticketscollection)
 
-[vuln\_scans Collection](#h.yr3f80azd8jd)
+[vuln\_scans Collection](#vuln_scanscollection)
 
-[scan Database:](#h.8p8z7vcs08gu)
+[scan Database:](#scandatabase)
 
-[certs Collection](#h.vkvlb4gapxkz)
+[certs Collection](#certscollection)
 
-[domains Collection](#h.qwt153c8i5hu)
+[domains Collection](#domainscollection)
 
-[https\_scan Collection](#h.7yzwy0vl6wdl)
+[https\_scan Collection](#https_scancollection)
 
-[precerts Collection](#h.e3bxszywt6cz)
+[precerts Collection](#precertscollection)
 
-[sslyze\_scan Collection](#h.jdvt2g4p7kc1)
+[sslyze\_scan Collection](#sslyze_scancollection)
 
-[trustymail Collection](#h.yqcj55euwwjs)
+[trustymail Collection](#trustymailcollection)
 
-[assessment Database:](#h.s1bjtae0qgd6)
+[assessment Database:](#assessmentdatabase)
 
-[rva Collection](#h.4ixfrma0cnea)
+[rva Collection](#rvacollection)
 
-Go to section
-* [cves Collection](#cves-collection)
-* [Another section](#new-section)    <-- it's called 'Another section' in this list but refers to 'New section'
-
-### cves Collection
-## New section
+[findings Collection](#findingscollection)
 
 * * * * *
 
@@ -224,7 +219,7 @@ CyHy stakeholders.
     [here](https://www.google.com/url?q=https://nmap.org/book/man-port-scanning-basics.html&sa=D&ust=1553612329771000)
 -   time [ISO date]: Timestamp when the port was scanned
 
-reports Collection {#h.xtcuyt1km9iy .c20}
+reports Collection
 ------------------
 
 The data in this collection is generated as part of Cyber Hygiene report
@@ -911,7 +906,7 @@ for
 assessment Database:
 ====================
 
-rva Collection {#h.4ixfrma0cnea .c20}
+rva Collection
 --------------
 
 -   Summary = Assessment Summary (ASMT\_ID / ASMT\_NAME)
