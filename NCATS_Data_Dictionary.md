@@ -65,7 +65,7 @@ Go to section
 * [cves Collection](#cves-collection)
 * [Another section](#new-section)    <-- it's called 'Another section' in this list but refers to 'New section'
 
-### cves Collections
+### cves Collection
 ## New section
 
 * * * * *
