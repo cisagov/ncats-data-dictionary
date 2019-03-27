@@ -62,10 +62,10 @@ This information is organized by database and collection (table).
 [rva Collection](#h.4ixfrma0cnea)
 
 Go to section
-* [Hello World](#hello-world)
+* [cves Collection](#cves-collection)
 * [Another section](#new-section)    <-- it's called 'Another section' in this list but refers to 'New section'
 
-### Hello World
+### cves Collections
 ## New section
 
 * * * * *
