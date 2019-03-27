@@ -21,11 +21,11 @@ This information is organized by database and collection (table).
 
 [Cyhy Database](#cyhy-database)
 
-[cves Collection](#cves-collection)
+[cves Collection](#cvescollection)
 
 [host\_scans Collection](#host_scanscollection)
 
-[hosts Collection](#hostcollection)
+[hosts Collection](#hostscollection)
 
 [places Collection](#placescollection)
 
