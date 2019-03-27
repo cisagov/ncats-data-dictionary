@@ -70,8 +70,6 @@ Go to section
 
 * * * * *
 
- {#h.6k1y2l3r3ao8 .c23 .c37}
-
 ## Cyhy Database
 ==============
 
