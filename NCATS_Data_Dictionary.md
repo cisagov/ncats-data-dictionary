@@ -19,7 +19,7 @@ following NoSQL MongoDB databases:
 
 This information is organized by database and collection (table).
 
-[cyhy Database](#cyhy-database)
+[Cyhy Database](#cyhy-database)
 
 [cves Collection](#h.apcsjqsir0bk)
 
@@ -62,11 +62,9 @@ This information is organized by database and collection (table).
 [rva Collection](#h.4ixfrma0cnea)
 
 Go to section
-[Cyhy Database](#cyhy-database)  
 * [Hello World](#hello-world)
 * [Another section](#new-section)    <-- it's called 'Another section' in this list but refers to 'New section'
 
-## Cyhy Database
 ### Hello World
 ## New section
 
@@ -74,7 +72,7 @@ Go to section
 
  {#h.6k1y2l3r3ao8 .c23 .c37}
 
-## Cyhy Database:
+## Cyhy Database
 ==============
 
 cves Collection {#h.apcsjqsir0bk .c20}
