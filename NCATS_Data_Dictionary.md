@@ -75,7 +75,7 @@ Go to section
 ## Cyhy Database
 ==============
 
-cves Collection
+## cves Collection
 ---------------
 
 The data in this collection is derived from the National Vulnerability
@@ -89,7 +89,7 @@ feeds](https://www.google.com/url?q=https://nvd.nist.gov/vuln/data-feeds&sa=D&us
 -   severity [decimal]: [CVSS v2.0 severity
     rating](https://www.google.com/url?q=https://nvd.nist.gov/vuln-metrics&sa=D&ust=1553612329756000)
 
-host\_scans Collection
+## host\_scans Collection
 ----------------------
 
 The data in this collection is derived from IP addresses supplied by the
