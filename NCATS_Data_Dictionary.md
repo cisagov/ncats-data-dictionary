@@ -255,9 +255,9 @@ stakeholders.
             the state
         -   `state_name` [string]: Full name of the state
 
-  -   `name` [string]: Full name of the organization
-  -   `type` [string]: Organization type (“FEDERAL”, “STATE”, “LOCAL”,
-      “TRIBAL”, “TERRITORIAL”, “PRIVATE”)
+    -   `name` [string]: Full name of the organization
+    -   `type` [string]: Organization type (“FEDERAL”, “STATE”, “LOCAL”,
+        “TRIBAL”, “TERRITORIAL”, “PRIVATE”)
 
 -   `children` [list of strings]: Identifiers of organizations that are
     children of this organization
@@ -274,9 +274,9 @@ stakeholders.
 -   `retired` [boolean]: Whether or not this organization is currently
     subscribed to the Cyber Hygiene service
 -   `scan_limits` [list of dictionaries]: Limits on scan concurrency
-  -   `concurrent` [integer]: Number of concurrent scans of that type
-  -   `scanType` [string]: Type of scan to limit (“NETSCAN1”, “NETSCAN2”,
-      “PORTSCAN”, “VULNSCAN”)
+    -   `concurrent` [integer]: Number of concurrent scans of that type
+    -   `scanType` [string]: Type of scan to limit (“NETSCAN1”, “NETSCAN2”,
+        “PORTSCAN”, “VULNSCAN”)
 
 -   `scan_types` [list of strings]: Types of scanning that this
     organization receives; only current supported value is “CYHY”
@@ -286,9 +286,9 @@ stakeholders.
     considered to be a CyHy stakeholder
 -   `windows` [list of dictionaries]: Windows when the organization allows
     us to scan
-  -   `day` [string]: Day that scanning is allowed
-  -   `start` [string]: Time of day when scanning is allowed to start
-  -   `duration` [integer]: Duration of scan window, in hours
+    -   `day` [string]: Day that scanning is allowed
+    -   `start` [string]: Time of day when scanning is allowed to start
+    -   `duration` [integer]: Duration of scan window, in hours
 
 snapshots Collection
 --------------------
@@ -343,16 +343,16 @@ CyHy stakeholders.
 -   `counts` [dictionary]: Number of hosts currently in each scan stage
     and scan status
 
-  -   `BASESCAN` [dictionary]: DEPRECATED
-  -   `NETSCAN1, NETSCAN2, PORTSCAN, VULNSCAN` [dictionaries]
-      -   `DONE` [integer]: Number of hosts for this organization in “DONE”
-          status for the given scan stage
-      -   `READY` [integer]: Number of hosts for this organization in “READY”
-          status for the given scan stage
-      -   `RUNNING` [integer]: Number of hosts for this organization in
-          “RUNNING” status for the given scan stage
-      -   `WAITING` [integer]: Number of hosts for this organization in
-          “WAITING” status for the given scan stage
+    -   `BASESCAN` [dictionary]: DEPRECATED
+    -   `NETSCAN1, NETSCAN2, PORTSCAN, VULNSCAN` [dictionaries]
+        -   `DONE` [integer]: Number of hosts for this organization in “DONE”
+            status for the given scan stage
+        -   `READY` [integer]: Number of hosts for this organization in “READY”
+            status for the given scan stage
+        -   `RUNNING` [integer]: Number of hosts for this organization in
+            “RUNNING” status for the given scan stage
+        -   `WAITING` [integer]: Number of hosts for this organization in
+            “WAITING” status for the given scan stage
       -   `last_change` [ISO date]: Timestamp of when this tally document was
           last updated
 
@@ -364,36 +364,36 @@ CyHy stakeholders.
 
 -   `_id` [ObjectId]: Internal database id of this ticket document
 -   `details` [dictionary]: Vulnerability details
-  -   `cve` [string]: [Common Vulnerabilities and
-      Exposures](https://www.google.com/url?q=https://cve.mitre.org/&sa=D&ust=1553612329789000) identifier
-  -   `cvss_base_score` [decimal]: [CVSS v2.0 base
-      score](https://www.google.com/url?q=https://nvd.nist.gov/vuln-metrics&sa=D&ust=1553612329790000)
-  -   `name` [string]: Vulnerability name
-  -   `score_source` [string]: Source of the CVSS base score (e.g. “nvd” or
-      “nessus”)
-  -   `severity` [decimal]: [CVSS v2.0 severity
-      rating](https://www.google.com/url?q=https://nvd.nist.gov/vuln-metrics&sa=D&ust=1553612329791000)
+    -   `cve` [string]: [Common Vulnerabilities and
+        Exposures](https://www.google.com/url?q=https://cve.mitre.org/&sa=D&ust=1553612329789000) identifier
+    -   `cvss_base_score` [decimal]: [CVSS v2.0 base
+        score](https://www.google.com/url?q=https://nvd.nist.gov/vuln-metrics&sa=D&ust=1553612329790000)
+    -   `name` [string]: Vulnerability name
+    -   `score_source` [string]: Source of the CVSS base score (e.g. “nvd” or
+        “nessus”)
+    -   `severity` [decimal]: [CVSS v2.0 severity
+        rating](https://www.google.com/url?q=https://nvd.nist.gov/vuln-metrics&sa=D&ust=1553612329791000)
 
 -   `events` [dictionary]: Details of key ticket events
-  -   `action` [string]: Event type
-      -   ``“OPENED”`` - Ticket opened for the first time
-      -   ``“VERIFIED”`` - Verified that an open ticket is still open
-      -   ``“CHANGED”`` - Data within the ticket changed (e.g. marked as a false
-          positive or the vulnerability’s CVSS score changed)
-      -   ``“CLOSED”`` - Ticket closed (vulnerability no longer detected)
-      -   ``“REOPENED”`` - A closed ticket reopened
-      -   ``“UNVERIFIED”`` - A vulnerability was detected for a ticket that is
-          marked as a false positive
+      -   `action` [string]: Event type
+          -   ``“OPENED”`` - Ticket opened for the first time
+          -   ``“VERIFIED”`` - Verified that an open ticket is still open
+          -   ``“CHANGED”`` - Data within the ticket changed (e.g. marked as a false
+              positive or the vulnerability’s CVSS score changed)
+          -   ``“CLOSED”`` - Ticket closed (vulnerability no longer detected)
+          -   ``“REOPENED”`` - A closed ticket reopened
+          -   ``“UNVERIFIED”`` - A vulnerability was detected for a ticket that is
+              marked as a false positive
 
-  -   `reason` [string]: Short description of the event
-  -   `reference` [ObjectId]: The identifier for the vulnerability scan
-      related to the event
-  -   `time` [ISO date]: Timestamp of the event
-  -   `delta` [list of dictionaries]: Only applies to “CHANGED” events; list
+      -   `reason` [string]: Short description of the event
+      -   `reference` [ObjectId]: The identifier for the vulnerability scan
+          related to the event
+      -   `time` [ISO date]: Timestamp of the event
+      -   `delta` [list of dictionaries]: Only applies to “CHANGED” events; list
       of what changed
-      -   `key` [string]: Ticket field that changed
-      -   `from` [type depends on key]: Value of key before the “CHANGED” event
-      -   `to` [type depends on key]: Value of key after the “CHANGED” event
+          -   `key` [string]: Ticket field that changed
+          -   `from` [type depends on key]: Value of key before the “CHANGED” event
+          -   `to` [type depends on key]: Value of key after the “CHANGED” event
 
 -   `false_positive` [boolean]: Is this ticket marked as a false positive?
 -   `ip` [string]: IP address of the host that was vulnerability scanned
@@ -561,8 +561,8 @@ for
 -   `agency` [dictionary]: The organization that claims ownership of the
     scanned domain
 
-  -   `id` [string]: Organization identifier
-  -   `name` [string]: Organization name
+    -   `id` [string]: Organization identifier
+    -   `name` [string]: Organization name
 
 -   `cyhy_stakeholder` [boolean]: Is the organization that claims to own this host a Cyber Hygiene stakeholder?
 -   `scan_date` [ISO date]: Timestamp when the domain was inserted in the
@@ -584,8 +584,8 @@ for
 -   `agency` [dictionary]: The organization that claims ownership of the
     scanned domain
 
-  -   `id` [string]: Organization identifier
-  -   `name` [string]: Organization name
+    -   `id` [string]: Organization identifier
+    -   `name` [string]: Organization name
 
 -   `base_domain` [string]: Base domain that was HTTPS scanned
 -   `canonical_url` [string]: URL based on the observed redirect logic of
@@ -597,12 +597,12 @@ for
 -   `domain_enforces_https` [boolean]: Does the scanned domain both
     support HTTPS and default to HTTPS?
 -   `domain_supports_https` [boolean]: True if:
-  -   `downgrades_https` is False and valid\_https is True
+    -   `downgrades_https` is False and valid\_https is True
 
-  OR
+    OR
 
-  -   `downgrades_https` is False and https\_bad\_chain is True and
-      https\_bad\_hostname is False
+    -   `downgrades_https` is False and https\_bad\_chain is True and
+        https\_bad\_hostname is False
 
 -   `domain_uses_strong_hsts` [boolean]: True if hsts is True for the
     scanned domain and hsts\_max\_age is at least 31,536,000 seconds (365 days)
@@ -723,8 +723,8 @@ for
 -   `agency` [dictionary]: The organization that claims ownership of the
     scanned domain
 
-  -   `id` [string]: Organization identifier
-  -   `name` [string]: Organization name
+    -   `id` [string]: Organization identifier
+    -   `name` [string]: Organization name
 
 -   `all_forward_secrecy` [boolean]: True if every cipher supported by
     scanned\_hostname supports forward secrecy
@@ -798,14 +798,14 @@ for
 -   `agency` [dictionary]: The organization that claims ownership of the
     scanned domain
 
-  -   `id` [string]: Organization identifier
-  -   `name` [string]: Organization name
+    -   `id` [string]: Organization identifier
+    -   `name` [string]: Organization name
 
 -   `aggregate_report_uris` [list of dictionaries]: List of DMARC
     aggregate report URIs specified by the scanned domain
 
-  -   `modifier` [string]: DMARC aggregate report URI modifier
-  -   `uri` [string]: DMARC aggregate report URI
+    -   `modifier` [string]: DMARC aggregate report URI modifier
+    -   `uri` [string]: DMARC aggregate report URI
 
 -   `base_domain` [string]: Base domain that was scanned by Trustymail
 -   `debug_info` [string]: List of warnings or errors reported by
@@ -836,8 +836,8 @@ for
 -   `forensic_report_uris` [list of dictionaries]: List of DMARC
     forensic report URIs specified by the scanned domain
 
-  -   `modifier` [string]: DMARC forensic report URI modifier
-  -   `uri` [string]: DMARC forensic report URI
+    -   `modifier` [string]: DMARC forensic report URI modifier
+    -   `uri` [string]: DMARC forensic report URI
 
 -   `has_aggregate_report_uri` [boolean]: True if
     dmarc\_results include valid rua URIs that tell recipients where to
