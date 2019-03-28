@@ -227,14 +227,13 @@ stakeholders.
 -   `_id` [string]: Organization identifier (corresponds to owner field
     in many collections)
 -   `agency` [dictionary]: Details about the organization
- -   `acronym` [string]: Organization acronym
- -   `contacts` [list of dictionaries]: Contact details for the
+    -   `acronym` [string]: Organization acronym
+    -   `contacts` [list of dictionaries]: Contact details for the
       organization
-
-  -   `email` [string]: Contact email address
-  -   `name` [string]: Contact name
-  -   `phone` [string]: Contact phone number
-  -   `type` [string]: Contact type (“TECHNICAL” or “DISTRO”)
+        -   `email` [string]: Contact email address
+        -   `name` [string]: Contact name
+        -   `phone` [string]: Contact phone number
+        -   `type` [string]: Contact type (“TECHNICAL” or “DISTRO”)
 
 -   `location` [dictionary]: Organization location details, typically
       represents headquarters or base of operations for organizations that
