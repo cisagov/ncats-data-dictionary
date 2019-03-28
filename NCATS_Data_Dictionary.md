@@ -887,7 +887,7 @@ for
 - `Man/Tool`: Was the finding identified manually or with a tool (Burp
   Suite, Cobalt Strike, Nessus, etc.) Tool will not be identified
 - `Int/Ext`: Was the finding identified during Internal or External
-  testing?^[[a]](#cmnt1)^
+  testing?
 - `Std Text Modify`: Was there a custom Finding name provided?
 - `Mitigate Finding Response Date`: Date on which customer responded
   with Mitigation data
