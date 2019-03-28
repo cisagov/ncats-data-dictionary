@@ -551,11 +551,9 @@ for
 - `domain` [string]: The domain that was HTTPS scanned
 - `domain_enforces_https` [boolean]: Does the scanned domain both
   support HTTPS and default to HTTPS?
-- `domain_supports_https` [boolean]: True if:
-  - `downgrades_https` is False and valid\_https is True
-  OR
-  - `downgrades_https` is False and https\_bad\_chain is True and
-    https\_bad\_hostname is False
+- `domain_supports_https` [boolean]: True if `downgrades_https` is
+  False and either (1) valid\_https is True or (2) https\_bad\_chain
+  is True and https\_bad\_hostname is False
 - `domain_uses_strong_hsts` [boolean]: True if hsts is True for the
   scanned domain and hsts\_max\_age is at least 31,536,000 seconds (365 days)
 - `downgrades_https` [boolean]: True if HTTPS is supported in some way,
