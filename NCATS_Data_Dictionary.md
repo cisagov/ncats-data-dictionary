@@ -317,7 +317,7 @@ CyHy stakeholders.
 -   `services` [dictionary]: Number of services detected in this snapshot,
     grouped by service name
 -   `start_time` [ISO date]: Timestamp of the first scan in this snapshot
--   `tix_msec_open`[dictionary]: Time a ticketß has been open
+-   `tix_msec_open`[dictionary]: Time a ticket has been open
 -   `tix_msec_to_close`[dictionary]: Time it took to close a ticket
 -   `unique_operating_systems` [integer]: Number of unique operating
     systems detected in this snapshot
