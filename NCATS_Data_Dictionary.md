@@ -7,7 +7,8 @@ following NoSQL MongoDB databases:
 
 - `cyhy` - Cyber Hygiene port and vulnerability scanning
 - `scan`
-  * Domains gathered from Cyber Hygiene and the GSA
+  * Domains gathered from Cyber Hygiene, GSA, the End of Term Web
+    Archive, or self-reported
   * SPF/DMARC/STARTTLS trustworthy email scanning
   * HTTPS web server scanning
   * SSL server scanning
