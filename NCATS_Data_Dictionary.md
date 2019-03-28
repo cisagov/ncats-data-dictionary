@@ -235,25 +235,25 @@ stakeholders.
         -   `phone` [string]: Contact phone number
         -   `type` [string]: Contact type (“TECHNICAL” or “DISTRO”)
 
--   `location` [dictionary]: Organization location details, typically
-      represents headquarters or base of operations for organizations that
-      are spread across multiple localities
+    -   `location` [dictionary]: Organization location details, typically
+          represents headquarters or base of operations for organizations that
+          are spread across multiple localities
 
-      -   `country` [string]: Two-letter abbreviation of the country
-      -   `country_name` [string]: Full name of the country
-      -   `county` [string]: Full name of the county
-      -   `county_fips` [string]: [FIPS
-          code](https://www.google.com/url?q=https://catalog.data.gov/dataset/fips-county-code-look-up-tool&sa=D&ust=1553612329776000) of
-          the county
-      -   `gnid_id` [long integer]: [GNIS
-          ID](https://www.google.com/url?q=https://geonames.usgs.gov/domestic/index.html&sa=D&ust=1553612329777000) of
-          the location
-      -   `name` [string]: Full name of the location
-      -   `state` [string]: Two-letter postal abbreviation of the state
-      -   `state_fips` [string]: [FIPS
-          code](https://www.google.com/url?q=https://catalog.data.gov/dataset/fips-state-codes&sa=D&ust=1553612329778000) for
-          the state
-      -   `state_name` [string]: Full name of the state
+        -   `country` [string]: Two-letter abbreviation of the country
+        -   `country_name` [string]: Full name of the country
+        -   `county` [string]: Full name of the county
+        -   `county_fips` [string]: [FIPS
+            code](https://www.google.com/url?q=https://catalog.data.gov/dataset/fips-county-code-look-up-tool&sa=D&ust=1553612329776000) of
+            the county
+        -   `gnid_id` [long integer]: [GNIS
+            ID](https://www.google.com/url?q=https://geonames.usgs.gov/domestic/index.html&sa=D&ust=1553612329777000) of
+            the location
+        -   `name` [string]: Full name of the location
+        -   `state` [string]: Two-letter postal abbreviation of the state
+        -   `state_fips` [string]: [FIPS
+            code](https://www.google.com/url?q=https://catalog.data.gov/dataset/fips-state-codes&sa=D&ust=1553612329778000) for
+            the state
+        -   `state_name` [string]: Full name of the state
 
   -   `name` [string]: Full name of the organization
   -   `type` [string]: Organization type (“FEDERAL”, “STATE”, “LOCAL”,
