@@ -553,9 +553,7 @@ for
   support HTTPS and default to HTTPS?
 - `domain_supports_https` [boolean]: True if:
   - `downgrades_https` is False and valid\_https is True
-
   OR
-
   - `downgrades_https` is False and https\_bad\_chain is True and
     https\_bad\_hostname is False
 - `domain_uses_strong_hsts` [boolean]: True if hsts is True for the
