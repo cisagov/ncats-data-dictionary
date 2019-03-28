@@ -108,14 +108,14 @@ CyHy stakeholders.
 -   `priority` [integer]: Scan priority of this host document, from -16
     (most urgent) to 1 (least urgent)
 
-    *   -16: Most severe vulnerability detected on this host is Critical
+    -   -16: Most severe vulnerability detected on this host is Critical
         severity
-    *   -8: Most severe vulnerability detected on this host is High severity
-    *   -4: Most severe vulnerability detected on this host is Medium
+    -   -8: Most severe vulnerability detected on this host is High severity
+    -   -4: Most severe vulnerability detected on this host is Medium
         severity
-    *   -2: Most severe vulnerability detected on this host is Low severity
-    *   -1: No vulnerabilities detected on this host
-    *    1: Host document represents a “dark space” IP address; i.e. live
+    -   -2: Most severe vulnerability detected on this host is Low severity
+    -   -1: No vulnerabilities detected on this host
+    -    1: Host document represents a “dark space” IP address; i.e. live
         host not detected
 
 -   `next_scan` [ISO date]: Timestamp of when this host document is
@@ -127,23 +127,23 @@ CyHy stakeholders.
     order
 -   `stage` [string]: Current scan stage for this host document
 
-    *   “NETSCAN1” - Port scan of top 30 most-common ports
-    *   “NETSCAN2” - Port scan of next 970 most-common ports
-    *   “PORTSCAN” - Full port scan of all 65,535 ports
-    *   “VULNSCAN” - Vulnerability scan
+    -   “NETSCAN1” - Port scan of top 30 most-common ports
+    -   “NETSCAN2” - Port scan of next 970 most-common ports
+    -   “PORTSCAN” - Full port scan of all 65,535 ports
+    -   “VULNSCAN” - Vulnerability scan
 
 -   `state` [dictionary]: Current state of this host document
 
-    *   reason [string]: Reason given by the port scanner as to whether or
+    -   reason [string]: Reason given by the port scanner as to whether or
         not this host document represents a live host
-    *   up [boolean]: Whether or not a live host was detected at this host
+    -   up [boolean]: Whether or not a live host was detected at this host
         document’s IP address by the port scanner
 
 -   `status` [string]: Current scan status for this host document:
-    *   “WAITING” - Waiting to be  for scanning
-    *   “READY” - Ready to be assigned to a scanner
-    *   “RUNNING” - Currently being scanned
-    *   “DONE” - Latest scan has completed
+    -   “WAITING” - Waiting to be  for scanning
+    -   “READY” - Ready to be assigned to a scanner
+    -   “RUNNING” - Currently being scanned
+    -   “DONE” - Latest scan has completed
 
 places Collection
 -----------------
@@ -212,8 +212,8 @@ creation process.
     contained results for multiple organizations
 -   `report_types` [list of strings]: Type of report that was generated
 
-    *   “CYBEX” - Cyber Exposure scorecard
-    *   “CYHY” - Cyber Hygiene report
+    -   “CYBEX” - Cyber Exposure scorecard
+    -   “CYHY” - Cyber Hygiene report
 
 -   `snapshot_oid` [ObjectId]: Snapshot that was the basis for this Cyber
     Hygiene report (value is null for Cyber Exposure scorecards)
@@ -227,30 +227,30 @@ stakeholders.
 -   `_id` [string]: Organization identifier (corresponds to owner field
     in many collections)
 -   `agency` [dictionary]: Details about the organization
-  *   `acronym` [string]: Organization acronym
-  *   `contacts` [list of dictionaries]: Contact details for the
+ -   `acronym` [string]: Organization acronym
+ -   `contacts` [list of dictionaries]: Contact details for the
       organization
 
-      *   `email` [string]: Contact email address
-      *   `name` [string]: Contact name
-      *   `phone` [string]: Contact phone number
-      *   `type` [string]: Contact type (“TECHNICAL” or “DISTRO”)
+  -   `email` [string]: Contact email address
+  -   `name` [string]: Contact name
+  -   `phone` [string]: Contact phone number
+  -   `type` [string]: Contact type (“TECHNICAL” or “DISTRO”)
 
-  *   `location` [dictionary]: Organization location details, typically
+-   `location` [dictionary]: Organization location details, typically
       represents headquarters or base of operations for organizations that
       are spread across multiple localities
 
-      *   `country` [string]: Two-letter abbreviation of the country
-      *   `country_name` [string]: Full name of the country
-      *   `county` [string]: Full name of the county
-      *   `county_fips` [string]: [FIPS
+      -   `country` [string]: Two-letter abbreviation of the country
+      -   `country_name` [string]: Full name of the country
+      -   `county` [string]: Full name of the county
+      -   `county_fips` [string]: [FIPS
           code](https://www.google.com/url?q=https://catalog.data.gov/dataset/fips-county-code-look-up-tool&sa=D&ust=1553612329776000) of
           the county
-      *   `gnid_id` [long integer]: [GNIS
+      -   `gnid_id` [long integer]: [GNIS
           ID](https://www.google.com/url?q=https://geonames.usgs.gov/domestic/index.html&sa=D&ust=1553612329777000) of
           the location
-      *   `name` [string]: Full name of the location
-      *   `state` [string]: Two-letter postal abbreviation of the state
+      -   `name` [string]: Full name of the location
+      -   `state` [string]: Two-letter postal abbreviation of the state
       -   `state_fips` [string]: [FIPS
           code](https://www.google.com/url?q=https://catalog.data.gov/dataset/fips-state-codes&sa=D&ust=1553612329778000) for
           the state
