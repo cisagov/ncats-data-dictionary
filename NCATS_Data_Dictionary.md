@@ -477,9 +477,9 @@ Transparency](https://www.certificate-transparency.org/) log scanner,
 which only grabs certificates that apply to domains in our [domains
 collection](#h.qwt153c8i5hu).  NOTE: More details may be available in
 the GitHub
-[README](https://github.com/dhs-ncats/cyhy-ct-logs/blob/initial/README.md)
+[README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
 document for
-[cyhy-ct-logs](https://github.com/dhs-ncats/cyhy-ct-logs).
+[cyhy-ct-logs](https://github.com/cisagov/cyhy-ct-logs).
 - `_id` [string]: Internal certificate identifier from the certificate
   transparency log where the certificate was detected
 - `issuer` [string]: The entity that signed and issued the
@@ -512,12 +512,12 @@ document for
 ### domains Collection ###
 
 The data in this collection is derived from domains collected by our
-[gatherer](https://github.com/dhs-ncats/gatherer), which pulls in
+[gatherer](https://github.com/cisagov/gatherer), which pulls in
 domains from Cyber Hygiene and the GSA.  NOTE: More details may be
 available in the GitHub
-[README](https://github.com/dhs-ncats/cyhy-ct-logs/blob/initial/README.md)
-documents for [gatherer](https://github.com/dhs-ncats/gatherer) and
-[saver](https://github.com/dhs-ncats/saver).
+[README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
+documents for [gatherer](https://github.com/cisagov/gatherer) and
+[saver](https://github.com/cisagov/saver).
 
 - `_id` [string]: Base domain name
 - `agency` [dictionary]: The organization that claims ownership of the
@@ -531,11 +531,11 @@ documents for [gatherer](https://github.com/dhs-ncats/gatherer) and
 ### https\_scan Collection ###
 
 The data in this collection is derived from domain names collected by
-our [gatherer](https://github.com/dhs-ncats/gatherer), which pulls in
+our [gatherer](https://github.com/cisagov/gatherer), which pulls in
 domains from Cyber Hygiene and the GSA.  NOTE: More details may be
 available in the GitHub
-[README](https://github.com/dhs-ncats/pshtt/blob/develop/README.md)
-document for [pshtt](https://github.com/dhs-ncats/pshtt).
+[README](https://github.com/cisagov/pshtt/blob/develop/README.md)
+document for [pshtt](https://github.com/cisagov/pshtt).
 
 - `_id` [string]: Internal database id of this HTTPS scan document
 - `agency` [dictionary]: The organization that claims ownership of the
@@ -624,9 +624,9 @@ Transparency](https://www.certificate-transparency.org/) log scanner,
 which only grabs certificates that apply to domains in our [domains
 collection](#h.qwt153c8i5hu).  NOTE: More details may be available in
 the GitHub
-[README](https://github.com/dhs-ncats/cyhy-ct-logs/blob/initial/README.md)
+[README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
 document for
-[cyhy-ct-logs](https://github.com/dhs-ncats/cyhy-ct-logs).
+[cyhy-ct-logs](https://github.com/cisagov/cyhy-ct-logs).
 
 - `_id` [string]: Internal certificate identifier from the certificate
   transparency log where the certificate was detected
@@ -660,7 +660,7 @@ document for
 ### sslyze\_scan Collection ###
 
 The data in this collection is derived from domain names collected by
-our [gatherer](https://github.com/dhs-ncats/gatherer), which pulls in
+our [gatherer](https://github.com/cisagov/gatherer), which pulls in
 domains from Cyber Hygiene and the GSA.  NOTE: More details may be
 available in the GitHub
 [README](https://github.com/nabla-c0d3/sslyze/blob/master/README.md)
@@ -730,11 +730,11 @@ document for [SSLyze](https://github.com/nabla-c0d3/sslyze).
 ### trustymail Collection ###
 
 The data in this collection is derived from domain names collected by
-our [gatherer](https://github.com/dhs-ncats/gatherer), which pulls in
+our [gatherer](https://github.com/cisagov/gatherer), which pulls in
 domains from Cyber Hygiene and the GSA.  NOTE: More details may be
 available in the GitHub
-[README](https://github.com/dhs-ncats/trustymail/blob/develop/README.md)
-document for [trustymail](https://github.com/dhs-ncats/trustymail).
+[README](https://github.com/cisagov/trustymail/blob/develop/README.md)
+document for [trustymail](https://github.com/cisagov/trustymail).
 
 - `_id` [string]: Internal database id of this Trustymail scan document
 - `agency` [dictionary]: The organization that claims ownership of the
