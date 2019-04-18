@@ -105,9 +105,9 @@ CyHy stakeholders.
   - -8:Most severe vulnerability detected on this host is High severity
   - -4:Most severe vulnerability detected on this host is Medium
     severity
-  - -2:Most severe vulnerability detected on this host is Low severity
-  - -1:No vulnerabilities detected on this host
-  -  1:Host document represents a "dark space" IP address; i.e. live
+  - -2: Most severe vulnerability detected on this host is Low severity
+  - -1: No vulnerabilities detected on this host
+  -  1: Host document represents a "dark space" IP address; i.e. live
     host not detected
 - `next_scan` [ISO date]: Timestamp of when this host document is
   scheduled to be scanned next; a value of null indicates that the
@@ -475,7 +475,7 @@ The data in this collection is derived from certificates collected by
 our [Certificate
 Transparency](https://www.certificate-transparency.org/) log scanner,
 which only grabs certificates that apply to domains in our [domains
-collection](#h.qwt153c8i5hu).  NOTE:More details may be available in
+collection](#h.qwt153c8i5hu).  NOTE: More details may be available in
 the GitHub
 [README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
 document for
@@ -513,7 +513,7 @@ document for
 
 The data in this collection is derived from domains collected by our
 [gatherer](https://github.com/cisagov/gatherer), which pulls in
-domains from Cyber Hygiene and the GSA.  NOTE:More details may be
+domains from Cyber Hygiene and the GSA.  NOTE: More details may be
 available in the GitHub
 [README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
 documents for [gatherer](https://github.com/cisagov/gatherer) and
@@ -532,7 +532,7 @@ documents for [gatherer](https://github.com/cisagov/gatherer) and
 
 The data in this collection is derived from domain names collected by
 our [gatherer](https://github.com/cisagov/gatherer), which pulls in
-domains from Cyber Hygiene and the GSA.  NOTE:More details may be
+domains from Cyber Hygiene and the GSA.  NOTE: More details may be
 available in the GitHub
 [README](https://github.com/cisagov/pshtt/blob/develop/README.md)
 document for [pshtt](https://github.com/cisagov/pshtt).
@@ -622,7 +622,7 @@ The data in this collection is derived from certificates collected by
 our [Certificate
 Transparency](https://www.certificate-transparency.org/) log scanner,
 which only grabs certificates that apply to domains in our [domains
-collection](#h.qwt153c8i5hu).  NOTE:More details may be available in
+collection](#h.qwt153c8i5hu).  NOTE: More details may be available in
 the GitHub
 [README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
 document for
@@ -661,7 +661,7 @@ document for
 
 The data in this collection is derived from domain names collected by
 our [gatherer](https://github.com/cisagov/gatherer), which pulls in
-domains from Cyber Hygiene and the GSA.  NOTE:More details may be
+domains from Cyber Hygiene and the GSA.  NOTE: More details may be
 available in the GitHub
 [README](https://github.com/nabla-c0d3/sslyze/blob/master/README.md)
 document for [SSLyze](https://github.com/nabla-c0d3/sslyze).
@@ -731,7 +731,7 @@ document for [SSLyze](https://github.com/nabla-c0d3/sslyze).
 
 The data in this collection is derived from domain names collected by
 our [gatherer](https://github.com/cisagov/gatherer), which pulls in
-domains from Cyber Hygiene and the GSA.  NOTE:More details may be
+domains from Cyber Hygiene and the GSA.  NOTE: More details may be
 available in the GitHub
 [README](https://github.com/cisagov/trustymail/blob/develop/README.md)
 document for [trustymail](https://github.com/cisagov/trustymail).
