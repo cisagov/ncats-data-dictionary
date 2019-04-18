@@ -475,7 +475,7 @@ The data in this collection is derived from certificates collected by
 our [Certificate
 Transparency](https://www.certificate-transparency.org/) log scanner,
 which only grabs certificates that apply to domains in our [domains 
-Collection](#domains-collection).  NOTE: More details may be available in
+collection](#domains-collection).  NOTE: More details may be available in
 the GitHub
 [README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
 document for
