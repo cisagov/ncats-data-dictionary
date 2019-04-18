@@ -3,7 +3,7 @@
 ## March 28, 2019 ##
 
 This document provides a data dictionary for the data stored in the
-following NoSQL MongoDB databases: 
+following NoSQL MongoDB databases:
 
 - `cyhy` - Cyber Hygiene port and vulnerability scanning
 - `scan`
@@ -13,12 +13,12 @@ following NoSQL MongoDB databases:
   * HTTPS web server scanning
   * SSL server scanning
   -  Certificates and pre-certificates from [Certificate
-     Transparency](https: //www.certificate-transparency.org) logs
+     Transparency](https://www.certificate-transparency.org) logs
 - `assessment` - Risk/Vulnerability Assessment (RVA) management data
 
 This information is organized by database and collection (table).
 
-[Cyhy Database: ](#cyhy-database)
+[Cyhy Database:](#cyhy-database)
   * [cves Collection](#cves-collection)
   * [host\_scans Collection](#host_scans-collection)
   * [hosts Collection](#hosts-collection)
@@ -31,7 +31,7 @@ This information is organized by database and collection (table).
   * [tickets Collection](#tickets-collection)
   * [vuln\_scans Collection](#vuln_scans-collection)
 
-[scan Database: ](#scan-database)
+[scan Database:](#scan-database)
   * [certs Collection](#certs-collection)
   * [domains Collection](#domains-collection)
   * [https\_scan Collection](#https_scan-collection)
@@ -39,7 +39,7 @@ This information is organized by database and collection (table).
   * [sslyze\_scan Collection](#sslyze_scan-collection)
   * [trustymail Collection](#trustymail-collection)
 
-[assessment Database: ](#assessment-database)
+[assessment Database:](#assessment-database)
   * [rva Collection](#rva-collection)
   * [findings Collection](#findings-collection)
 
@@ -50,15 +50,15 @@ This information is organized by database and collection (table).
 ### cves Collection ###
 
 The data in this collection is derived from the National Vulnerability
-Database [CVE feeds](https: //nvd.nist.gov/vuln/data-feeds).
+Database [CVE feeds](https://nvd.nist.gov/vuln/data-feeds).
 
 - `_id` [string]: [Common Vulnerabilities and
-  Exposures](https: //cve.mitre.org/)
+  Exposures](https://cve.mitre.org/)
   identifier
 - `cvss_score` [decimal]: [CVSS v2.0 base
-  score](https: //nvd.nist.gov/vuln-metrics)
+  score](https://nvd.nist.gov/vuln-metrics)
 - `severity` [decimal]: [CVSS v2.0 severity
-  rating](https: //nvd.nist.gov/vuln-metrics)
+  rating](https://nvd.nist.gov/vuln-metrics)
 
 ### host\_scans Collection ###
 
@@ -68,13 +68,13 @@ CyHy stakeholders.
 - `accuracy` [integer]: Confidence rating by scanner in OS class guess
 - `classes` [list of dictionaries]: Guesses for OS class (comes
   directly from scanner; see nmap details
-  [here](https: //nmap.org/book/app-nmap-dtd.html))
+  [here](https://nmap.org/book/app-nmap-dtd.html))
 - `hostname` [string]: Hostname, if one was detected
 - `ip` [string]: IP address that was scanned
 - `ip_int` [long integer]: Integer version of IP address that was scanned
 - `latest` [boolean]: Is this the latest scan of this host?
 - `line` [integer]: Line number in the [nmap OS
-  database](https: //svn.nmap.org/nmap/nmap-os-db)
+  database](https://svn.nmap.org/nmap/nmap-os-db)
   corresponding to the OS class guess
 - `name` [string]: Type of host detected (best guess, comes directly
   from scanner)
@@ -100,14 +100,14 @@ CyHy stakeholders.
   database
 - `priority` [integer]: Scan priority of this host document, from -16
   (most urgent) to 1 (least urgent)
-  - -16: Most severe vulnerability detected on this host is Critical
+  - -16:Most severe vulnerability detected on this host is Critical
     severity
-  - -8: Most severe vulnerability detected on this host is High severity
-  - -4: Most severe vulnerability detected on this host is Medium
+  - -8:Most severe vulnerability detected on this host is High severity
+  - -4:Most severe vulnerability detected on this host is Medium
     severity
-  - -2: Most severe vulnerability detected on this host is Low severity
-  - -1: No vulnerabilities detected on this host
-  -  1: Host document represents a "dark space" IP address; i.e. live
+  - -2:Most severe vulnerability detected on this host is Low severity
+  - -1:No vulnerabilities detected on this host
+  -  1:Host document represents a "dark space" IP address; i.e. live
     host not detected
 - `next_scan` [ISO date]: Timestamp of when this host document is
   scheduled to be scanned next; a value of null indicates that the
@@ -127,7 +127,7 @@ CyHy stakeholders.
     not this host document represents a live host
   - up [boolean]: Whether or not a live host was detected at this host
     document’s IP address by the port scanner
-- `status` [string]: Current scan status for this host document: 
+- `status` [string]: Current scan status for this host document:
   - "WAITING" - Waiting to be  for scanning
   - "READY" - Ready to be assigned to a scanner
   - "RUNNING" - Currently being scanned
@@ -137,10 +137,10 @@ CyHy stakeholders.
 
 The data in this collection is derived from the "Government Units" and
 "Populated Places" Topical Gazetteers files from
-[USGS](https: //geonames.usgs.gov/domestic/download_data.htm).
+[USGS](https://geonames.usgs.gov/domestic/download_data.htm).
 
 - `_id` [long integer]: [GNIS
-  ID](https: //geonames.usgs.gov/domestic/index.html) corresponding to
+  ID](https://geonames.usgs.gov/domestic/index.html) corresponding to
   this place
 - `class` [string]: Class of this place ("COUNTY", "STATE", "Populated
   Place", "Civil")
@@ -149,13 +149,13 @@ The data in this collection is derived from the "Government Units" and
 - `country_name` [string]: Full name of the country where this place is
 - `county` [string]: Full name of the county where this place is
 - `county_fips` [string]: [FIPS
-  code](https: //catalog.data.gov/dataset/fips-county-code-look-up-tool)
+  code](https://catalog.data.gov/dataset/fips-county-code-look-up-tool)
   for the county where this place is
 - `name` [string]: Full name of this place
 - `state` [string]: Two-letter postal abbreviation of the state where
   this place is
 - `state_fips` [string]: [FIPS
-  code](https: //catalog.data.gov/dataset/fips-state-codes) for the
+  code](https://catalog.data.gov/dataset/fips-state-codes) for the
   state where this place is
 - `state_name` [string]: Full name of the state where this place is
 
@@ -181,7 +181,7 @@ CyHy stakeholders.
 - `source` [string]: Source of the scan (e.g. "nmap")
 - `state` [string]: State of the port, as reported by the scanner; see
   nmap states
-  [here](https: //nmap.org/book/man-port-scanning-basics.html)
+  [here](https://nmap.org/book/man-port-scanning-basics.html)
 - `time` [ISO date]: Timestamp when the port was scanned
 
 ### reports Collection ###
@@ -223,15 +223,15 @@ stakeholders.
     - `country_name` [string]: Full name of the country
     - `county` [string]: Full name of the county
     - `county_fips` [string]: [FIPS
-      code](https: //catalog.data.gov/dataset/fips-county-code-look-up-tool)
+      code](https://catalog.data.gov/dataset/fips-county-code-look-up-tool)
       of the county
     - `gnid_id` [long integer]: [GNIS
-      ID](https: //geonames.usgs.gov/domestic/index.html) of the
+      ID](https://geonames.usgs.gov/domestic/index.html) of the
       location
     - `name` [string]: Full name of the location
     - `state` [string]: Two-letter postal abbreviation of the state
     - `state_fips` [string]: [FIPS
-      code](https: //catalog.data.gov/dataset/fips-state-codes) for the
+      code](https://catalog.data.gov/dataset/fips-state-codes) for the
       state
     - `state_name` [string]: Full name of the state
   - `name` [string]: Full name of the organization
@@ -338,14 +338,14 @@ CyHy stakeholders.
 - `_id` [ObjectId]: Internal database id of this ticket document
 - `details` [dictionary]: Vulnerability details
   - `cve` [string]: [Common Vulnerabilities and
-    Exposures](https: //cve.mitre.org/) identifier
+    Exposures](https://cve.mitre.org/) identifier
   - `cvss_base_score` [decimal]: [CVSS v2.0 base
-    score](https: //nvd.nist.gov/vuln-metrics)
+    score](https://nvd.nist.gov/vuln-metrics)
   - `name` [string]: Vulnerability name
   - `score_source` [string]: Source of the CVSS base score (e.g. "nvd" or
     "nessus")
   - `severity` [decimal]: [CVSS v2.0 severity
-    rating](https: //nvd.nist.gov/vuln-metrics)
+    rating](https://nvd.nist.gov/vuln-metrics)
 - `events` [dictionary]: Details of key ticket events
   - `action` [string]: Event type
     - ``"OPENED"`` - Ticket opened for the first time
@@ -398,20 +398,20 @@ CyHy stakeholders.
 
 - `_id` [ObjectId]: Internal database id of this vulnerability scan
   document
-- `bid` [string]: [Bugtraq ID](https: //en.wikipedia.org/wiki/Bugtraq)
-- `cert` [string]: [CERT ID](http: //www.kb.cert.org/vuls)
+- `bid` [string]: [Bugtraq ID](https://en.wikipedia.org/wiki/Bugtraq)
+- `cert` [string]: [CERT ID](http://www.kb.cert.org/vuls)
 - `cpe` [string]: [Common Platform
-  Enumerator](https: //nvd.nist.gov/products/cpe)
+  Enumerator](https://nvd.nist.gov/products/cpe)
 - `cve` [string]: [Common Vulnerabilities and
-  Exposures](https: //cve.mitre.org/) identifier
+  Exposures](https://cve.mitre.org/) identifier
 - `cvss_base_score` [string]: [CVSS base
-  score](https: //nvd.nist.gov/vuln-metrics)
+  score](https://nvd.nist.gov/vuln-metrics)
 - `cvss_temporal_score` [string]: [CVSS temporal
-  score](https: //nvd.nist.gov/vuln-metrics)
+  score](https://nvd.nist.gov/vuln-metrics)
 - `cvss_temporal_vector` [string]: [CVSS temporal
-  vector](https: //nvd.nist.gov/vuln-metrics)
+  vector](https://nvd.nist.gov/vuln-metrics)
 - `cvss_vector` [string]: [CVSS
-  vector](https: //nvd.nist.gov/vuln-metrics)
+  vector](https://nvd.nist.gov/vuln-metrics)
 - `description` [string]: Description of the vulnerability, according to
   the vulnerability scanner
 - `exploit_available` [string]: Whether or not an exploit is available,
@@ -428,7 +428,7 @@ CyHy stakeholders.
 - `owner` [string]: Organization that claims the IP address associated
   with this vulnerability scan
 - `osvdb` [string]: [Open Source Vulnerability
-  Database](https: //en.wikipedia.org/wiki/Open_Source_Vulnerability_Database)
+  Database](https://en.wikipedia.org/wiki/Open_Source_Vulnerability_Database)
   identifier for the detected vulnerability
 - `patch_publication_date` [ISO date]: Date when a patch was published
   for this vulnerability
@@ -473,38 +473,38 @@ CyHy stakeholders.
 
 The data in this collection is derived from certificates collected by
 our [Certificate
-Transparency](https: //www.certificate-transparency.org/) log scanner,
+Transparency](https://www.certificate-transparency.org/) log scanner,
 which only grabs certificates that apply to domains in our [domains
-collection](#h.qwt153c8i5hu).  NOTE: More details may be available in
+collection](#h.qwt153c8i5hu).  NOTE:More details may be available in
 the GitHub
-[README](https: //github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
+[README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
 document for
-[cyhy-ct-logs](https: //github.com/cisagov/cyhy-ct-logs).
+[cyhy-ct-logs](https://github.com/cisagov/cyhy-ct-logs).
 - `_id` [string]: Internal certificate identifier from the certificate
   transparency log where the certificate was detected
 - `issuer` [string]: The entity that signed and issued the
  certificate; see [RFC
- 5280](https: //tools.ietf.org/html/rfc5280%23section-4.1.2.4) for
+ 5280](https://tools.ietf.org/html/rfc5280%23section-4.1.2.4) for
  details
 - `not_after` [ISO date]: Timestamp when certificate expires
 - `not_before` [ISO date]: Timestamp when certificate became/becomes
   valid
 - `pem` [string]: The certificate in [PEM
-  format](https: //tools.ietf.org/html/rfc1421)
+  format](https://tools.ietf.org/html/rfc1421)
 - `sct_exists` [boolean]: Whether or not the timestamp in
   sct\_or\_not\_before refers to a Signed Certificate Timestamp
 - `sct_or_not_before` [ISO date]: The earliest [Signed Certificate
-  Timestamp](https: //tools.ietf.org/html/rfc6962%23section-3), if one
+  Timestamp](https://tools.ietf.org/html/rfc6962%23section-3), if one
   exists, otherwise equal to the not\_before timestamp
 - `serial` [string]: Unique identifier assigned to this certificate by
   the issuing Certificate Authority; see [RFC
-  5280](https: //tools.ietf.org/html/rfc5280%23section-4.1.2.2) for
+  5280](https://tools.ietf.org/html/rfc5280%23section-4.1.2.2) for
   details
 - `subjects` [list of strings]: List of hostnames/domains where this
   certificate can be used.  This field is a concatenated list of the
   Common Name (if it exists; this field is deprecated) and the
   [Subject Alternative
-  Names](https: //tools.ietf.org/html/rfc5280%23section-4.2.1.6).
+  Names](https://tools.ietf.org/html/rfc5280%23section-4.2.1.6).
 - `trimmed_subjects` [list of strings]: List of second-level domains
   where this certificate can be used.  These are extracted from the
   subjects field.
@@ -512,12 +512,12 @@ document for
 ### domains Collection ###
 
 The data in this collection is derived from domains collected by our
-[gatherer](https: //github.com/cisagov/gatherer), which pulls in
-domains from Cyber Hygiene and the GSA.  NOTE: More details may be
+[gatherer](https://github.com/cisagov/gatherer), which pulls in
+domains from Cyber Hygiene and the GSA.  NOTE:More details may be
 available in the GitHub
-[README](https: //github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
-documents for [gatherer](https: //github.com/cisagov/gatherer) and
-[saver](https: //github.com/cisagov/saver).
+[README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
+documents for [gatherer](https://github.com/cisagov/gatherer) and
+[saver](https://github.com/cisagov/saver).
 
 - `_id` [string]: Base domain name
 - `agency` [dictionary]: The organization that claims ownership of the
@@ -531,11 +531,11 @@ documents for [gatherer](https: //github.com/cisagov/gatherer) and
 ### https\_scan Collection ###
 
 The data in this collection is derived from domain names collected by
-our [gatherer](https: //github.com/cisagov/gatherer), which pulls in
-domains from Cyber Hygiene and the GSA.  NOTE: More details may be
+our [gatherer](https://github.com/cisagov/gatherer), which pulls in
+domains from Cyber Hygiene and the GSA.  NOTE:More details may be
 available in the GitHub
-[README](https: //github.com/cisagov/pshtt/blob/develop/README.md)
-document for [pshtt](https: //github.com/cisagov/pshtt).
+[README](https://github.com/cisagov/pshtt/blob/develop/README.md)
+document for [pshtt](https://github.com/cisagov/pshtt).
 
 - `_id` [string]: Internal database id of this HTTPS scan document
 - `agency` [dictionary]: The organization that claims ownership of the
@@ -560,22 +560,22 @@ document for [pshtt](https: //github.com/cisagov/pshtt).
   but the canonical HTTPS endpoint immediately redirects internally to
   HTTP
 - `https_bad_chain` [boolean]: True if either HTTPS endpoint
-  (https: //\<domain\>, https: //www.\<domain\>) contains a bad chain
+  (https://\<domain\>, https://www.\<domain\>) contains a bad chain
 - `https_bad_hostname` [boolean]: True if either HTTPS endpoint
-  (https: //\<domain\>, https: //www.\<domain\>) fails hostname
+  (https://\<domain\>, https://www.\<domain\>) fails hostname
   validation
 - `https_expired_cert` [boolean]: True if either HTTPS endpoint
-  (https: //\<domain\>, https: //www.\<domain\>) has an expired
+  (https://\<domain\>, https://www.\<domain\>) has an expired
   certificate
 - `https_self_signed_cert` [boolean]: True if either HTTPS endpoint
-  (https: //\<domain\>, https: //www.\<domain\>) has a self-signed
+  (https://\<domain\>, https://www.\<domain\>) has a self-signed
   certificate
 - `hsts` [boolean]: True if the canonical\_url has
-  [HSTS](https: //en.wikipedia.org/wiki/HTTP_Strict_Transport_Security)
+  [HSTS](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security)
   enabled
 - `hsts_base_domain_preloaded` [boolean]: True if base\_domain appears
   in appears in the [Chrome preload
-  list](https: //chromium.googlesource.com/chromium/src/net/%2B/master/http/transport_security_state_static.json)
+  list](https://chromium.googlesource.com/chromium/src/net/%2B/master/http/transport_security_state_static.json)
   with the include\_subdomains flag equal to True
 - `hsts_entire_domain` [boolean]: True if the root HTTPS endpoint (not
   the canonical HTTPS endpoint) has HSTS enabled and uses the HSTS
@@ -586,20 +586,20 @@ document for [pshtt](https: //github.com/cisagov/pshtt).
   canonical endpoint of the scanned domain
 - `hsts_preload_pending` [boolean]: True if the scanned domain appears
   in the [Chrome preload pending
-  list](https: //hstspreload.org/api/v2/pending) with the
+  list](https://hstspreload.org/api/v2/pending) with the
   include\_subdomains flag equal to True
 - `hsts_preload_ready` [boolean]: True if the root HTTPS endpoint (not
   the canonical HTTPS endpoint) has HSTS enabled, has a max-age of at
   least 18 weeks, and uses the include\_subdomains and preload flag.
 - `hsts_preloaded` [boolean]: True if if the scanned domain appears in
   the [Chrome preload
-  list](https: //chromium.googlesource.com/chromium/src/net/%2B/master/http/transport_security_state_static.json)
+  list](https://chromium.googlesource.com/chromium/src/net/%2B/master/http/transport_security_state_static.json)
   with the include\_subdomains flag equal to True, regardless of what
   header is present on any endpoint
 - `is_base_domain` [boolean]: True if domain is equal to base\_domain
 - `latest` [boolean]: Is this the latest HTTPS scan of this host?
-- `live` [boolean]: Are any of the endpoints (http: //\<domain\>,
-  http: //www.\<domain\>, https: //\<domain\>, https: //www.\<domain\>)
+- `live` [boolean]: Are any of the endpoints (http://\<domain\>,
+  http://www.\<domain\>, https://\<domain\>, https://www.\<domain\>)
   for this domain live?
 - `redirect` [boolean]: True if at least one endpoint is a redirect, and
   all endpoints are either redirects or down
@@ -607,8 +607,8 @@ document for [pshtt](https: //github.com/cisagov/pshtt).
   redirect is True)
 - `scan_date` [ISO date]: Timestamp when the HTTPS scan was done
 - `strictly_forces_https` [boolean]: True if one of the HTTPS
-  endpoints (https: //\<domain\>, https: //www.\<domain\>) is live, and
-  if both HTTP endpoints (http: //\<domain\>, http: //www.\<domain\>)
+  endpoints (https://\<domain\>, https://www.\<domain\>) is live, and
+  if both HTTP endpoints (http://\<domain\>, http://www.\<domain\>)
   are either down or redirect immediately to any HTTPS URI
 - `unknown_error` [boolean]: True if an unknown error occurred during
   the HTTPS scan
@@ -620,39 +620,39 @@ document for [pshtt](https: //github.com/cisagov/pshtt).
 
 The data in this collection is derived from certificates collected by
 our [Certificate
-Transparency](https: //www.certificate-transparency.org/) log scanner,
+Transparency](https://www.certificate-transparency.org/) log scanner,
 which only grabs certificates that apply to domains in our [domains
-collection](#h.qwt153c8i5hu).  NOTE: More details may be available in
+collection](#h.qwt153c8i5hu).  NOTE:More details may be available in
 the GitHub
-[README](https: //github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
+[README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
 document for
-[cyhy-ct-logs](https: //github.com/cisagov/cyhy-ct-logs).
+[cyhy-ct-logs](https://github.com/cisagov/cyhy-ct-logs).
 
 - `_id` [string]: Internal certificate identifier from the certificate
   transparency log where the certificate was detected
 - `issuer` [string]: The entity that signed and issued the
   certificate; see [RFC
-  5280](https: //tools.ietf.org/html/rfc5280%23section-4.1.2.4) for
+  5280](https://tools.ietf.org/html/rfc5280%23section-4.1.2.4) for
   details
 - `not_after` [ISO date]: Timestamp when certificate expires
 - `not_before` [ISO date]: Timestamp when certificate became/becomes
   valid
 - `pem` [string]: The certificate in [PEM
-  format](https: //tools.ietf.org/html/rfc1421)
+  format](https://tools.ietf.org/html/rfc1421)
 - `sct_exists` [boolean]: Whether or not the timestamp in
   sct\_or\_not\_before refers to the Signed Certificate Timestamp
 - `sct_or_not_before` [ISO date]: The [Signed Certificate
-  Timestamp](https: //tools.ietf.org/html/rfc6962%23section-3), if it
+  Timestamp](https://tools.ietf.org/html/rfc6962%23section-3), if it
   exists, otherwise equal to the not\_before timestamp
 - `serial` [string]: Unique identifier assigned to this certificate by
   the issuing Certificate Authority; see [RFC
-  5280](https: //tools.ietf.org/html/rfc5280%23section-4.1.2.2) for
+  5280](https://tools.ietf.org/html/rfc5280%23section-4.1.2.2) for
   details
 - `subjects` [list of strings]: List of hostnames/domains where this
   certificate can be used.  This field is a concatenated list of the
   Common Name (if it exists; this field is deprecated) and the
   [Subject Alternative
-  Names](https: //tools.ietf.org/html/rfc5280%23section-4.2.1.6).
+  Names](https://tools.ietf.org/html/rfc5280%23section-4.2.1.6).
 - `trimmed_subjects` [list of strings]: List of second-level domains
   where this certificate can be used.  These are extracted from the
   subjects field.
@@ -660,11 +660,11 @@ document for
 ### sslyze\_scan Collection ###
 
 The data in this collection is derived from domain names collected by
-our [gatherer](https: //github.com/cisagov/gatherer), which pulls in
-domains from Cyber Hygiene and the GSA.  NOTE: More details may be
+our [gatherer](https://github.com/cisagov/gatherer), which pulls in
+domains from Cyber Hygiene and the GSA.  NOTE:More details may be
 available in the GitHub
-[README](https: //github.com/nabla-c0d3/sslyze/blob/master/README.md)
-document for [SSLyze](https: //github.com/nabla-c0d3/sslyze).
+[README](https://github.com/nabla-c0d3/sslyze/blob/master/README.md)
+document for [SSLyze](https://github.com/nabla-c0d3/sslyze).
 
 - `_id` [string]: Internal database id of this SSLyze scan document
 - `agency` [dictionary]: The organization that claims ownership of the
@@ -730,11 +730,11 @@ document for [SSLyze](https: //github.com/nabla-c0d3/sslyze).
 ### trustymail Collection ###
 
 The data in this collection is derived from domain names collected by
-our [gatherer](https: //github.com/cisagov/gatherer), which pulls in
-domains from Cyber Hygiene and the GSA.  NOTE: More details may be
+our [gatherer](https://github.com/cisagov/gatherer), which pulls in
+domains from Cyber Hygiene and the GSA.  NOTE:More details may be
 available in the GitHub
-[README](https: //github.com/cisagov/trustymail/blob/develop/README.md)
-document for [trustymail](https: //github.com/cisagov/trustymail).
+[README](https://github.com/cisagov/trustymail/blob/develop/README.md)
+document for [trustymail](https://github.com/cisagov/trustymail).
 
 - `_id` [string]: Internal database id of this Trustymail scan document
 - `agency` [dictionary]: The organization that claims ownership of the
@@ -802,7 +802,7 @@ document for [trustymail](https: //github.com/cisagov/trustymail).
   for base\_domain is syntactically correct
 - `valid_spf` [boolean]: True if the SPF record found for the scanned
   domain is syntactically correct, per [RFC
-  4408](https: //www.ietf.org/rfc/rfc4408.txt)
+  4408](https://www.ietf.org/rfc/rfc4408.txt)
 
 ## assessment Database ##
 
