@@ -100,10 +100,10 @@ CyHy stakeholders.
   database
 - `priority` [integer]: Scan priority of this host document, from -16
   (most urgent) to 1 (least urgent)
-  - -16:Most severe vulnerability detected on this host is Critical
+  - -16: Most severe vulnerability detected on this host is Critical
     severity
-  - -8:Most severe vulnerability detected on this host is High severity
-  - -4:Most severe vulnerability detected on this host is Medium
+  - -8: Most severe vulnerability detected on this host is High severity
+  - -4: Most severe vulnerability detected on this host is Medium
     severity
   - -2: Most severe vulnerability detected on this host is Low severity
   - -1: No vulnerabilities detected on this host
@@ -474,8 +474,8 @@ CyHy stakeholders.
 The data in this collection is derived from certificates collected by
 our [Certificate
 Transparency](https://www.certificate-transparency.org/) log scanner,
-which only grabs certificates that apply to domains in our [domains
-collection](#h.qwt153c8i5hu).  NOTE: More details may be available in
+which only grabs certificates that apply to domains in our [domains 
+Collection](#domains-collection).  NOTE: More details may be available in
 the GitHub
 [README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
 document for
