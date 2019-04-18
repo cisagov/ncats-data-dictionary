@@ -808,7 +808,7 @@ document for [trustymail](https://github.com/cisagov/trustymail).
 
 ### rva Collection ###
 
-- `_ID` [string]:  Assessment ID (RV0XXX for RVA/HVA/PCA or VR0XXX for VADR)
+- `_ID` [ObjectId]:  Assessment ID (RV0XXX for RVA/HVA/PCA or VR0XXX for VADR)
 - `App A Date` [ISO date]:  Date Appendix A was signed
 - `App A Signed` [boolean]:  Was appendix A signed?
 - `App B Signed` [boolean]:  Was Appendix B signed?
