@@ -474,8 +474,8 @@ CyHy stakeholders.
 The data in this collection is derived from certificates collected by
 our [Certificate
 Transparency](https://www.certificate-transparency.org/) log scanner,
-which only grabs certificates that apply to domains in our [domains
-collection](#h.qwt153c8i5hu).  NOTE: More details may be available in
+which only grabs certificates that apply to domains in our [domains 
+collection](#domains-collection).  NOTE: More details may be available in
 the GitHub
 [README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
 document for
@@ -808,93 +808,94 @@ document for [trustymail](https://github.com/cisagov/trustymail).
 
 ### rva Collection ###
 
-- `Summary`: Assessment Summary (ASMT\_ID / ASMT\_NAME)
-- `Status`:  Assessment Status (Open -\> Planning -\> Testing -\>
-  Reporting -\> Wrap Up -\> Completed)
-- `Created`:  Date ticket was created
-- `Updated`:  Last update date
-- `App A Date`:  Date Appendix A was signed
-- `App A Signed`:  Was appendix A signed? (Boolean)
-- `App B Signed`:  Date Appendix B was signed, if applicable
-- `Asmt Type`:Assessment Type (RVA, HVA, RPT, PCA, VADR)
-- `External Testing Begin`:  Date of beginning of external testing
-- `External Testing End`:  Date of end of external testing
-- `Group/Project`: Group or Project
-- `Internal Testing Begin`:  Date of beginning of internal testing
-- `Internal City`:  Location (City) of on-site testing if applicable
-- `Internal Testing End`:  Date of end of internal testing
-- `Mgmt Req`:  Management Request (DHS, NCCIC, EOP, FALSE)
-- `POC Email`:  POC E-mail address
-- `POC Name`:  POC Name
-- `POC Phone`:  POC Phone Number
-- `ROE Date`:  Date ROE is signed
-- `ROE Number`:  ROE Number (assigned by NCATS)
-- `ROE Signed`:  ROE Signed (Boolean)
-- `_ID`:  Assessment ID (RV0XXX for RVA/HVA/PCA or VR0XXX for VADR)
-- `Asmt Name`:  Assessment Name (Usually customer name and assessment
+- `_ID` [ObjectId]: Assessment ID (RV0XXX for RVA/HVA/PCA or VR0XXX for VADR)
+- `App A Date` [ISO date]: Date Appendix A was signed
+- `App A Signed` [boolean]: Was Appendix A signed?
+- `App B Signed` [boolean]: Was Appendix B signed?
+- `Asmt Name` [string]: Assessment Name (Usually customer name and assessment
   type)
-- `Requested Svcs`:  Array containing list of NCATS services requested
-  for this engagement (List of Services here)
-- `Stakeholder Name`:  Stakeholder Name
-- `State` :  State where stakeholder is located
-- `Testing Complete Date`:  Date on which all testing is completed
-- `Testing Phase`:  Phase of Testing (External / Internal)
-- `Election`:  Elections Related (Boolean)
-- `Sector`:  Fed/State/Local/Tribal/Territorial/Critical Infrastructure
-- `CI Type`:  Critical Infrastructure Type (Selected from among 16 CI
+- `Asmt Type` [string]: Assessment Type (RVA, HVA, RPT, PCA, VADR)
+- `CI Systems` [string]: If any subsystems assessed belong to a different
+  critical infrastructure category from the CI\_TYPE field, it will be listed
+  here in an array (For example, Hoover Dam would be CI\_WATER for CI\_TYPE,
+  but would have CI\_SYSTEMS:CI\_ENERGY for electric)
+- `CI Type` [string]: Critical Infrastructure Type (Selected from among 16 CI
   Sectors)
-- `CI Systems`:  If any subsystems assessed belong to a different
-  critical infrastructure category from the CI\_TYPE field, it will be
-  listed here in an array (For example, Hoover Dam would be CI\_WATER
-  for CI\_TYPE, but would have CI\_SYSTEMS: CI\_ENERGY for electric)
-- `Fed Lead`:  Federal Team Lead assigned to the assessment
-- `Contractor Count`:  Number of contractors assigned
-- `Draft w/ POC Date`:  Date when draft report is sent to the customer
-- `Fed Count`:  Number of Federal operators assigned
-- `Report Final Date`:  Date when report is marked Final
-- `Operator`:  Name of the Operator (Contractor or Fed)
-- `Stakeholder Id`:  TBD
-- `Testing Begin Date`:  Date when all testing begins
+- `Completed` [ISO date]: Date when assessment was completed
+- `Contractor Count` [integer]: Number of contractors assigned
+- `Created` [ISO date]: Date ticket was created
+- `Draft w/ POC Date` [ISO date]: Date when draft report is sent to the
+  customer
+- `Election` [boolean]: Elections Related
+- `External Testing Begin` [ISO date]: Date of beginning of external testing
+- `External Testing End` [ISO date]: Date of end of external testing
+- `Fed Count` [integer]: Number of Federal operators assigned
+- `Fed Lead` [string]: Federal Team Lead assigned to the assessment
+- `Group/Project` [string]: Group or Project
+- `Internal City` [string]: Location (City) of on-site testing if applicable
+- `Internal Testing Begin` [ISO date]: Date of beginning of internal testing
+- `Internal Testing End` [ISO date]: Date of end of internal testing
+- `Mgmt Req` [string]: Management Request (DHS, NCCIC, EOP, FALSE)
+- `Operator` [string]: Name of the Operator (Contractor or Fed)
+- `Report Final Date` [integer]: Date when report is marked Final
+- `Requested Svcs` [array]: Array containing list of NCATS services requested
+  for this engagement (List of Services here)
+- `ROE Date` [ISO date]: Date ROE is signed
+- `ROE Number` [integer]: ROE Number (assigned by NCATS)
+- `ROE Signed` [boolean]: ROE Signed
+- `Sector` [string]: Fed/State/Local/Tribal/Territorial/Critical
+  Infrastructure
+- `Stakeholder Id` [string]: TBD
+- `Stakeholder Name` [string]: Stakeholder Name
+- `State` [string]: State where stakeholder is located
+- `Status` [string]: Assessment Status (Open -\> Planning -\> Testing -\>
+  Reporting -\> Wrap Up -\> Completed)
+- `Summary` [string]: Assessment Summary (ASMT\_ID / ASMT\_NAME)
+- `Testing Begin Date` [ISO date]: Date when all testing begins
+- `Testing Complete Date` [ISO date]: Date on which all testing is completed
+- `Testing Phase` [string]: Phase of Testing (External / Internal)
+- `Updated` [ISO date]: Last update date
 
 ### findings Collection ###
 
-- `_id`: Unique key for DB to identify individual finding
-- `Custom Finding Name`: Custom name for finding identified by Fed Team
-  Lead, if applicable
-- `Severity`: Ranking of severity assigned by Fed Team Lead. Severity
-  can vary depending on importance of the system, or other
-  environmental factors [Low, Medium, High, Critical]
-- `Service`: RVA service during which finding was identified
-- `FY`: Fiscal Year during which testing was conducted. Due to
-  ever-changing cybersecurity landscape, more current data is
-  recommended when conducting analysis
-- `Assessment Type`: Type of Assessment [RVA, HVA, RPT]
-- `NCATS ID`: Standard number assigned by NCATS to the Finding Name
-- `FED/SLTT/CI`: Customer Sector
-- `Mitigated Finding Status`: Mitigation status as reported by customer
-  during 180-day mitigation survey. Note-survey is optional and
-  self-reported, no validation performed by NCATS that mitigations
-  were performed as stated. Please be careful using this metric.
-- `RVA ID`: Assessment ID during which finding was identified. Note -
-  this number identifies the customer when paired with information
-  from Assessments collection. This number is provided with Findings
-  info to identify unique assessments.
-- `Name`: Name of Finding
-- `Man/Tool`: Was the finding identified manually or with a tool (Burp
-  Suite, Cobalt Strike, Nessus, etc.) Tool will not be identified
-- `Int/Ext`: Was the finding identified during Internal or External
+- `_id` [ObjectId]: Unique key for DB to identify individual finding
+- `Assessment Type` [string]: Type of Assessment [RVA, HVA, RPT]
+- `CI Subtype` [string]: Identifies which of 16 Critical Infrastructure
+  sectors customer belongs to, if any
+- `Custom Finding Name` [string]: Custom name for finding identified by Fed
+  Team Lead, if applicable
+- `Default Finding Severity` [string]: Default level of severity for this type
+  of finding. Please see notes in Severity for more info on how Fed Team Leads
+  assign severity ratings.
+- `FED/SLTT/CI` [string]: Customer Sector
+- `FY` [string]: Fiscal Year during which testing was conducted. Due to
+  ever-changing cybersecurity landscape, more current data is recommended when
+  conducting analysis
+- `Int/Ext` [string]: Was the finding identified during Internal or External
   testing?
-- `Std Text Modify`: Was there a custom Finding name provided?
-- `Mitigate Finding Response Date`: Date on which customer responded
-  with Mitigation data
-- `Default Finding Severity`: Default level of severity for this type of
-  finding. Please see notes in Severity for more info on how Fed Team
-  Leads assign severity ratings.
-- `CI Subtype`: Identifies which of 16 Critical Infrastructure sectors
-  customer belongs to, if any
-- `NIST 800-53` [array]: This array will list which controls in NIST
-  800-53 are applicable to the finding identified. As NIST 800-53 is a
-  Federal standard, this is more applicable for Federal customers
+- `Man/Tool` [string]: Was the finding identified manually or with a tool
+  (Burp Suite, Cobalt Strike, Nessus, etc.) Tool will not be identified
+- `Mitigate Finding Response Date` [ISO date]: Date on which customer
+  responded with Mitigation data
+- `Mitigated Finding Status` [string]: Mitigation status as reported by
+  customer during 180-day mitigation survey. Note-survey is optional and
+  self-reported, no validation performed by NCATS that mitigations were
+  performed as stated. Please be careful using this metric.
+- `Name` [string]: Name of Finding
+- `NCATS ID` [integer]: Standard number assigned by NCATS to the Finding Name
 - `NCSF` [array]: This array will list which controls in the NICE
-  Cybersecurity Framework are applicable to the finding identified.
-  This is a more universal standard than NIST 800-53
+  Cybersecurity Framework are applicable to the finding identified. This is a
+  more universal standard than NIST 800-53
+- `NIST 800-53` [array]: This array will list which controls in NIST 800-53
+  are applicable to the finding identified. As NIST 800-53 is a Federal
+  standard, this is more applicable for Federal customers
+- `RVA ID` [string]: Assessment ID during which finding was identified. Note -
+  this number identifies the customer when paired with information from
+  Assessments collection. This number is provided with Findings info to
+  identify unique assessments.
+- `Service` [string]: RVA service during which finding was identified
+- `Severity` [string]: Ranking of severity assigned by Fed Team Lead. Severity
+  can vary depending on importance of the system, or other environmental
+  factors [Low, Medium, High, Critical]
+- `Std Text Modify` [string]: Was there a custom Finding name provided?
+
