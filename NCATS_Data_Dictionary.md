@@ -837,9 +837,6 @@ document for [trustymail](https://github.com/cisagov/trustymail).
 - `Internal Testing End` [ISO date]: Date of end of internal testing
 - `Mgmt Req` [string]: Management Request (DHS, NCCIC, EOP, FALSE)
 - `Operator` [string]: Name of the Operator (Contractor or Fed)
-- `POC Email` [string]: POC E-mail address
-- `POC Name` [string]: POC Name
-- `POC Phone` [string]: POC Phone Number
 - `Report Final Date` [integer]: Date when report is marked Final
 - `Requested Svcs` [array]: Array containing list of NCATS services requested
   for this engagement (List of Services here)
