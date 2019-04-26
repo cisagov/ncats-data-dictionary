@@ -225,7 +225,7 @@ stakeholders.
     - `county_fips` [string]: [FIPS
       code](https://catalog.data.gov/dataset/fips-county-code-look-up-tool)
       of the county
-    - `gnid_id` [long integer]: [GNIS
+    - `gnis_id` [long integer]: [GNIS
       ID](https://geonames.usgs.gov/domestic/index.html) of the
       location
     - `name` [string]: Full name of the location
