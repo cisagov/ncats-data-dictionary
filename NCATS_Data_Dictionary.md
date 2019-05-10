@@ -40,7 +40,7 @@ This information is organized by database and collection (table).
   * [trustymail Collection](#trustymail-collection)
 
 [assessment Database:](#assessment-database)
-  * [assessment Collection](#assessment-collection)
+  * [assessments Collection](#assessments-collection)
   * [findings Collection](#findings-collection)
 
 * * * * *
@@ -806,7 +806,7 @@ document for [trustymail](https://github.com/cisagov/trustymail).
 
 ## assessment Database ##
 
-### assessment Collection ###
+### assessments Collection ###
 
 - `_id` [ObjectId]: Assessment ID (RV0XXX for RVA/HVA/PCA or VR0XXX for VADR)
 - `appendix_a_signed_date` [ISO date]: Date Appendix A was signed
