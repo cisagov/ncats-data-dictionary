@@ -40,7 +40,7 @@ This information is organized by database and collection (table).
   * [trustymail Collection](#trustymail-collection)
 
 [assessment Database:](#assessment-database)
-  * [rva Collection](#rva-collection)
+  * [assessment Collection](#assessment-collection)
   * [findings Collection](#findings-collection)
 
 * * * * *
@@ -474,7 +474,7 @@ CyHy stakeholders.
 The data in this collection is derived from certificates collected by
 our [Certificate
 Transparency](https://www.certificate-transparency.org/) log scanner,
-which only grabs certificates that apply to domains in our [domains 
+which only grabs certificates that apply to domains in our [domains
 collection](#domains-collection).  NOTE: More details may be available in
 the GitHub
 [README](https://github.com/cisagov/cyhy-ct-logs/blob/initial/README.md)
@@ -806,55 +806,55 @@ document for [trustymail](https://github.com/cisagov/trustymail).
 
 ## assessment Database ##
 
-### rva Collection ###
+### assessment Collection ###
 
-- `_ID` [ObjectId]: Assessment ID (RV0XXX for RVA/HVA/PCA or VR0XXX for VADR)
-- `App A Date` [ISO date]: Date Appendix A was signed
-- `App A Signed` [boolean]: Was Appendix A signed?
-- `App B Signed` [boolean]: Was Appendix B signed?
-- `Asmt Name` [string]: Assessment Name (Usually customer name and assessment
+- `_id` [ObjectId]: Assessment ID (RV0XXX for RVA/HVA/PCA or VR0XXX for VADR)
+- `appendix_a_signed_date` [ISO date]: Date Appendix A was signed
+- `appendix_a_signed` [boolean]: Was Appendix A signed?
+- `appendix_b_signed` [boolean]: Was Appendix B signed?
+- `assessment_completed` [ISO date]: Date when assessment was completed
+- `assessment_name` [string]: Assessment Name (Usually customer name and assessment
   type)
-- `Asmt Type` [string]: Assessment Type (RVA, HVA, RPT, PCA, VADR)
-- `CI Systems` [string]: If any subsystems assessed belong to a different
-  critical infrastructure category from the CI\_TYPE field, it will be listed
-  here in an array (For example, Hoover Dam would be CI\_WATER for CI\_TYPE,
-  but would have CI\_SYSTEMS:CI\_ENERGY for electric)
-- `CI Type` [string]: Critical Infrastructure Type (Selected from among 16 CI
+- `assessment_status` [string]: Assessment Status (Open -\> Planning -\>
+  Testing -\> Reporting -\> Wrap Up -\> Completed)
+- `assessment_summary` [string]: Assessment Summary (ASMT\_ID / ASMT\_NAME)
+- `assessment_type` [string]: Assessment Type (RVA, HVA, RPT, PCA, VADR)
+- `ci_systems` [list]: If any subsystems assessed belong to a different
+  critical infrastructure category from the `ci_type` field, it will be listed
+  here (For example, Hoover Dam would be `ci_type: CI_WATER` and
+  `ci_systems: [CI_ENERGY]` for electric)
+- `ci_type` [string]: Critical Infrastructure Type (Selected from among 16 CI
   Sectors)
-- `Completed` [ISO date]: Date when assessment was completed
-- `Contractor Count` [integer]: Number of contractors assigned
-- `Created` [ISO date]: Date ticket was created
-- `Draft w/ POC Date` [ISO date]: Date when draft report is sent to the
+- `contractor_count` [integer]: Number of contractors assigned
+- `created` [ISO date]: Date ticket was created
+- `draft_completed` [ISO date]: Date when draft report is sent to the
   customer
-- `Election` [boolean]: Elections Related
-- `External Testing Begin` [ISO date]: Date of beginning of external testing
-- `External Testing End` [ISO date]: Date of end of external testing
-- `Fed Count` [integer]: Number of Federal operators assigned
-- `Fed Lead` [string]: Federal Team Lead assigned to the assessment
-- `Group/Project` [string]: Group or Project
-- `Internal City` [string]: Location (City) of on-site testing if applicable
-- `Internal Testing Begin` [ISO date]: Date of beginning of internal testing
-- `Internal Testing End` [ISO date]: Date of end of internal testing
-- `Mgmt Req` [string]: Management Request (DHS, NCCIC, EOP, FALSE)
-- `Operator` [string]: Name of the Operator (Contractor or Fed)
-- `Report Final Date` [integer]: Date when report is marked Final
-- `Requested Svcs` [array]: Array containing list of NCATS services requested
-  for this engagement (List of Services here)
-- `ROE Date` [ISO date]: Date ROE is signed
-- `ROE Number` [integer]: ROE Number (assigned by NCATS)
-- `ROE Signed` [boolean]: ROE Signed
-- `Sector` [string]: Fed/State/Local/Tribal/Territorial/Critical
+- `election` [boolean]: Is this assessment election-related?
+- `external_testing_begin` [ISO date]: Date of beginning of external testing
+- `external_testing_end` [ISO date]: Date of end of external testing
+- `fed_count` [integer]: Number of Federal operators assigned
+- `fed_lead` [string]: Federal Team Lead assigned to the assessment
+- `group_project` [string]: Group or Project
+- `internal_testing_begin` [ISO date]: Date of beginning of internal testing
+- `internal_testing_city` [string]: Location (city) of on-site testing, if
+  applicable
+- `internal_testing_end` [ISO date]: Date of end of internal testing
+- `last_change` [ISO date]: Last update date
+- `management_request` [string]: Management Request (DHS, NCCIC, EOP, FALSE)
+- `operators` [list]: List of operator names (contractor or federal)
+- `report_final_date` [integer]: Date when report is marked Final
+- `requested_services` [list]: NCATS services requested for this engagement
+- `roe_number` [integer]: ROE Number (assigned by NCATS)
+- `roe_signed` [boolean]: ROE Signed
+- `roe_signed_date` [ISO date]: Date ROE is signed
+- `sector` [string]: Fed/State/Local/Tribal/Territorial/Critical
   Infrastructure
-- `Stakeholder Id` [string]: TBD
-- `Stakeholder Name` [string]: Stakeholder Name
-- `State` [string]: State where stakeholder is located
-- `Status` [string]: Assessment Status (Open -\> Planning -\> Testing -\>
-  Reporting -\> Wrap Up -\> Completed)
-- `Summary` [string]: Assessment Summary (ASMT\_ID / ASMT\_NAME)
-- `Testing Begin Date` [ISO date]: Date when all testing begins
-- `Testing Complete Date` [ISO date]: Date on which all testing is completed
-- `Testing Phase` [string]: Phase of Testing (External / Internal)
-- `Updated` [ISO date]: Last update date
+- `stakeholder_id` [string]: TBD
+- `stakeholder_name` [string]: Stakeholder Name
+- `stakeholder_state` [string]: State where stakeholder is located
+- `testing_begin` [ISO date]: Date when all testing begins
+- `testing_complete` [ISO date]: Date on which all testing is completed
+- `testing_phase` [string]: Phase of Testing (External / Internal)
 
 ### findings Collection ###
 
@@ -898,4 +898,3 @@ document for [trustymail](https://github.com/cisagov/trustymail).
   can vary depending on importance of the system, or other environmental
   factors [Low, Medium, High, Critical]
 - `Std Text Modify` [string]: Was there a custom Finding name provided?
-
