@@ -22,6 +22,7 @@ This information is organized by database and collection (table).
   * [cves Collection](#cves-collection)
   * [host\_scans Collection](#host_scans-collection)
   * [hosts Collection](#hosts-collection)
+  * [notifications Collection](#notifications-collection)
   * [places Collection](#places-collection)
   * [port\_scans Collection](#port_scans-collection)
   * [reports Collection](#reports-collection)
@@ -132,6 +133,21 @@ CyHy stakeholders.
   - "READY" - Ready to be assigned to a scanner
   - "RUNNING" - Currently being scanned
   - "DONE" - Latest scan has completed
+
+### notifications Collection ###
+
+The data in this collection is generated as part of Cyber Hygiene, whenever
+a new Critical-severity or High-severity [ticket](#tickets-collection)
+is created.
+
+- `_id` [ObjectId]: Internal database id of this notification document
+- `generated_for` [list]: Organizations that have already generated a
+notification PDF document that includes the data from the ticket
+referenced in this notification
+- `ticket_id` [ObjectId]: Internal database identifier for the ticket that
+this notification refers to
+- `ticket_owner` [string]: The organization that owns the ticket that this
+notification refers to
 
 ### places Collection ###
 
