@@ -43,6 +43,7 @@ This information is organized by database and collection (table).
 [assessment Database:](#assessment-database)
   * [assessments Collection](#assessments-collection)
   * [findings Collection](#findings-collection)
+  * [definitions Collection](#definitions-collection)
 
 * * * * *
 
@@ -875,42 +876,54 @@ document for [trustymail](https://github.com/cisagov/trustymail).
 ### findings Collection ###
 
 - `_id` [ObjectId]: Unique key for DB to identify individual finding
-- `Assessment Type` [string]: Type of Assessment [RVA, HVA, RPT]
-- `CI Subtype` [string]: Identifies which of 16 Critical Infrastructure
+- `asmt_type` [string]: Type of Assessment [RVA, HVA, RPT]
+- `ci_subtype` [string]: Identifies which of 16 Critical Infrastructure
   sectors customer belongs to, if any
-- `Custom Finding Name` [string]: Custom name for finding identified by Fed
+- `custom_name` [string]: Custom name for finding identified by Fed
   Team Lead, if applicable
-- `Default Finding Severity` [string]: Default level of severity for this type
+- `default_severity` [string]: Default level of severity for this type
   of finding. Please see notes in Severity for more info on how Fed Team Leads
   assign severity ratings.
-- `FED/SLTT/CI` [string]: Customer Sector
-- `FY` [string]: Fiscal Year during which testing was conducted. Due to
+- `sector` [string]: Customer Sector
+- `fy` [string]: Fiscal Year during which testing was conducted. Due to
   ever-changing cybersecurity landscape, more current data is recommended when
   conducting analysis
-- `Int/Ext` [string]: Was the finding identified during Internal or External
+- `int/ext` [string]: Was the finding identified during Internal or External
   testing?
-- `Man/Tool` [string]: Was the finding identified manually or with a tool
+- `man/tool` [string]: Was the finding identified manually or with a tool
   (Burp Suite, Cobalt Strike, Nessus, etc.) Tool will not be identified
-- `Mitigate Finding Response Date` [ISO date]: Date on which customer
+- `mitigate_response_date` [ISO date]: Date on which customer
   responded with Mitigation data
-- `Mitigated Finding Status` [string]: Mitigation status as reported by
+- `mitigate_status` [string]: Mitigation status as reported by
   customer during 180-day mitigation survey. Note-survey is optional and
   self-reported, no validation performed by NCATS that mitigations were
   performed as stated. Please be careful using this metric.
-- `Name` [string]: Name of Finding
-- `NCATS ID` [integer]: Standard number assigned by NCATS to the Finding Name
-- `NCSF` [array]: This array will list which controls in the NICE
+- `finding_name` [string]: Name of Finding
+- `ncats_id` [integer]: Standard number assigned by NCATS to the Finding Name
+- `ncsf` [array]: This array will list which controls in the NICE
   Cybersecurity Framework are applicable to the finding identified. This is a
   more universal standard than NIST 800-53
-- `NIST 800-53` [array]: This array will list which controls in NIST 800-53
+- `nist_800-53` [array]: This array will list which controls in NIST 800-53
   are applicable to the finding identified. As NIST 800-53 is a Federal
   standard, this is more applicable for Federal customers
-- `RVA ID` [string]: Assessment ID during which finding was identified. Note -
+- `rva_id` [string]: Assessment ID during which finding was identified. Note -
   this number identifies the customer when paired with information from
   Assessments collection. This number is provided with Findings info to
   identify unique assessments.
-- `Service` [string]: RVA service during which finding was identified
-- `Severity` [string]: Ranking of severity assigned by Fed Team Lead. Severity
+- `service` [string]: RVA service during which finding was identified
+- `severity` [string]: Ranking of severity assigned by Fed Team Lead. Severity
   can vary depending on importance of the system, or other environmental
   factors [Low, Medium, High, Critical]
-- `Std Text Modify` [string]: Was there a custom Finding name provided?
+- `std_txt_modify` [string]: Was there a custom Finding name provided?
+
+### definitions Collection ###
+
+- `_id` [ObjectId]: Unique key for DB to identify individual finding
+- `ncats_id` [interger]: NCATS Finding ID Number
+- `name` [string]: Name of the finding
+- `service` [string]: Assessment service which this finding occurs
+- `finding` [string]: Default description of the finding
+- `nist_800-53` [string]: NIST 800-53 mapping
+- `nist_csf` [string]: NIST Cybersecurity Framework mapping
+- `std_remediation` [string]: Standard recommended remediation for finding
+- `std_severity` [string]: Default severity level for finding
