@@ -15,6 +15,7 @@ following NoSQL MongoDB databases:
   * Certificates and pre-certificates from [Certificate
     Transparency](https://www.certificate-transparency.org) logs
 * `assessment` - Risk/Vulnerability Assessment (RVA) management data
+* `pca` - Phishing Campaign Assessment management data
 
 This information is organized by database and collection (table).
 
