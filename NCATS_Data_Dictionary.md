@@ -969,7 +969,7 @@ the application was detected
 * `end_time` [ISO date]: Timestamp when the campaign ended
 * `images` [dictionary]: Images associated with this campaign
   * ``“landing-page”`` - Internal ID of landing page image
-  * ``“sent-email”`` - Internal ID of sent email” image
+  * ``“sent-email”`` - Internal ID of sent email image
   * ``“link-warning”`` - Internal ID of link warning image
 * `start_time` [ISO date]: Timestamp when the campaign started
 * `subject` [string]: Subject used in the phishing email for this campaign
