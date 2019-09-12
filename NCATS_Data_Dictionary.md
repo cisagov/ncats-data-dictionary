@@ -51,7 +51,7 @@ This information is organized by database and collection (table).
 [PCA Database:](#pca-database)
 
 * [applications Collection](#applications-collection)
-* [assessments Collection](#assessments-collection)
+* [assessments Collection](#assessments-collection-1)
 * [campaigns Collection](#campaigns-collection)
 * [clicks Collection](#clicks-collection)
 * [customers Collection](#customers-collection)
