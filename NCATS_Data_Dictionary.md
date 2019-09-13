@@ -5,7 +5,9 @@
 This document provides a data dictionary for the data stored in the
 following NoSQL MongoDB databases:
 
+* `assessment` - Risk/Vulnerability Assessment (RVA) management data
 * `cyhy` - Cyber Hygiene port and vulnerability scanning
+* `pca` - Phishing Campaign Assessment management data
 * `scan`
   * Domains gathered from Cyber Hygiene, GSA, the End of Term Web
     Archive, or self-reported
@@ -14,10 +16,13 @@ following NoSQL MongoDB databases:
   * SSL server scanning
   * Certificates and pre-certificates from [Certificate
     Transparency](https://www.certificate-transparency.org) logs
-* `assessment` - Risk/Vulnerability Assessment (RVA) management data
-* `pca` - Phishing Campaign Assessment management data
 
 This information is organized by database and collection (table).
+
+[assessment Database:](#assessment-database)
+
+* [assessments Collection](#assessments-collection)
+* [findings Collection](#findings-collection)
 
 [Cyhy Database:](#cyhy-database)
 
@@ -34,20 +39,6 @@ This information is organized by database and collection (table).
 * [tickets Collection](#tickets-collection)
 * [vuln\_scans Collection](#vuln_scans-collection)
 
-[scan Database:](#scan-database)
-
-* [certs Collection](#certs-collection)
-* [domains Collection](#domains-collection)
-* [https\_scan Collection](#https_scan-collection)
-* [precerts Collection](#precerts-collection)
-* [sslyze\_scan Collection](#sslyze_scan-collection)
-* [trustymail Collection](#trustymail-collection)
-
-[assessment Database:](#assessment-database)
-
-* [assessments Collection](#assessments-collection)
-* [findings Collection](#findings-collection)
-
 [PCA Database:](#pca-database)
 
 * [applications Collection](#applications-collection)
@@ -59,7 +50,111 @@ This information is organized by database and collection (table).
 * [templates Collection](#templates-collection)
 * [users Collection](#users-collection)
 
+[scan Database:](#scan-database)
+
+* [certs Collection](#certs-collection)
+* [domains Collection](#domains-collection)
+* [https\_scan Collection](#https_scan-collection)
+* [precerts Collection](#precerts-collection)
+* [sslyze\_scan Collection](#sslyze_scan-collection)
+* [trustymail Collection](#trustymail-collection)
+
 * * * * *
+
+## assessment Database ##
+
+### assessments Collection ###
+
+* `_id` [ObjectId]: Assessment ID (RV0XXX for RVA/HVA/PCA or VR0XXX for VADR)
+* `appendix_a_signed_date` [ISO date]: Date Appendix A was signed
+* `appendix_a_signed` [boolean]: Was Appendix A signed?
+* `appendix_b_signed` [boolean]: Was Appendix B signed?
+* `assessment_completed` [ISO date]: Date when assessment was completed
+* `assessment_name` [string]: Assessment Name (Usually customer name and assessment
+  type)
+* `assessment_status` [string]: Assessment Status (Open -\> Planning -\>
+  Testing -\> Reporting -\> Wrap Up -\> Completed)
+* `assessment_summary` [string]: Assessment Summary (ASMT\_ID / ASMT\_NAME)
+* `assessment_type` [string]: Assessment Type (RVA, HVA, RPT, PCA, VADR)
+* `ci_systems` [list]: If any subsystems assessed belong to a different
+  critical infrastructure category from the `ci_type` field, it will be listed
+  here (For example, Hoover Dam would be `ci_type: CI_WATER` and
+  `ci_systems: [CI_ENERGY]` for electric)
+* `ci_type` [string]: Critical Infrastructure Type (Selected from among 16 CI
+  Sectors)
+* `contractor_count` [integer]: Number of contractors assigned
+* `created` [ISO date]: Date ticket was created
+* `draft_completed` [ISO date]: Date when draft report is sent to the
+  customer
+* `election` [boolean]: Is this assessment election-related?
+* `external_testing_begin` [ISO date]: Date of beginning of external testing
+* `external_testing_end` [ISO date]: Date of end of external testing
+* `fed_count` [integer]: Number of Federal operators assigned
+* `fed_lead` [string]: Federal Team Lead assigned to the assessment
+* `group_project` [string]: Group or Project
+* `internal_testing_begin` [ISO date]: Date of beginning of internal testing
+* `internal_testing_city` [string]: Location (city) of on-site testing, if
+  applicable
+* `internal_testing_end` [ISO date]: Date of end of internal testing
+* `last_change` [ISO date]: Last update date
+* `management_request` [string]: Management Request (DHS, NCCIC, EOP, FALSE)
+* `operators` [list]: List of operator names (contractor or federal)
+* `report_final_date` [integer]: Date when report is marked Final
+* `requested_services` [list]: NCATS services requested for this engagement
+* `roe_number` [integer]: ROE Number (assigned by NCATS)
+* `roe_signed` [boolean]: ROE Signed
+* `roe_signed_date` [ISO date]: Date ROE is signed
+* `sector` [string]: Fed/State/Local/Tribal/Territorial/Critical
+  Infrastructure
+* `stakeholder_id` [string]: TBD
+* `stakeholder_name` [string]: Stakeholder Name
+* `stakeholder_state` [string]: State where stakeholder is located
+* `testing_begin` [ISO date]: Date when all testing begins
+* `testing_complete` [ISO date]: Date on which all testing is completed
+* `testing_phase` [string]: Phase of Testing (External / Internal)
+
+### findings Collection ###
+
+* `_id` [ObjectId]: Unique key for DB to identify individual finding
+* `Assessment Type` [string]: Type of Assessment [RVA, HVA, RPT]
+* `CI Subtype` [string]: Identifies which of 16 Critical Infrastructure
+  sectors customer belongs to, if any
+* `Custom Finding Name` [string]: Custom name for finding identified by Fed
+  Team Lead, if applicable
+* `Default Finding Severity` [string]: Default level of severity for this type
+  of finding. Please see notes in Severity for more info on how Fed Team Leads
+  assign severity ratings.
+* `FED/SLTT/CI` [string]: Customer Sector
+* `FY` [string]: Fiscal Year during which testing was conducted. Due to
+  ever-changing cybersecurity landscape, more current data is recommended when
+  conducting analysis
+* `Int/Ext` [string]: Was the finding identified during Internal or External
+  testing?
+* `Man/Tool` [string]: Was the finding identified manually or with a tool
+  (Burp Suite, Cobalt Strike, Nessus, etc.) Tool will not be identified
+* `Mitigate Finding Response Date` [ISO date]: Date on which customer
+  responded with Mitigation data
+* `Mitigated Finding Status` [string]: Mitigation status as reported by
+  customer during 180-day mitigation survey. Note-survey is optional and
+  self-reported, no validation performed by NCATS that mitigations were
+  performed as stated. Please be careful using this metric.
+* `Name` [string]: Name of Finding
+* `NCATS ID` [integer]: Standard number assigned by NCATS to the Finding Name
+* `NCSF` [array]: This array will list which controls in the NICE
+  Cybersecurity Framework are applicable to the finding identified. This is a
+  more universal standard than NIST 800-53
+* `NIST 800-53` [array]: This array will list which controls in NIST 800-53
+  are applicable to the finding identified. As NIST 800-53 is a Federal
+  standard, this is more applicable for Federal customers
+* `RVA ID` [string]: Assessment ID during which finding was identified. Note -
+  this number identifies the customer when paired with information from
+  Assessments collection. This number is provided with Findings info to
+  identify unique assessments.
+* `Service` [string]: RVA service during which finding was identified
+* `Severity` [string]: Ranking of severity assigned by Fed Team Lead. Severity
+  can vary depending on importance of the system, or other environmental
+  factors [Low, Medium, High, Critical]
+* `Std Text Modify` [string]: Was there a custom Finding name provided?
 
 ## Cyhy Database ##
 
@@ -499,6 +594,147 @@ CyHy stakeholders.
 * `vuln_publication_date` [ISO date]: Vulnerability publication date
 * `xref` [string]: External reference
 
+## PCA Database ##
+
+### applications Collection ###
+
+* `_id` [ObjectId]: Internal database id of this detected application
+* `assessment` [string]: ID of PCA assessment where this application was detected
+* `campaign` [string]:  ID of PCA campaign where this application was detected
+* `customer` [string]: PCA customer identifier associated with this assessment
+* `external_ip` [string]: External IP address of the host where the application
+was detected
+* `external_ip_int` [long integer]: Integer version of the external IP address
+where the application was detected
+* `internal_ip` [string]: Internal IP address of the host where the application
+was detected
+* `internal_ip_int` [string]: Integer version of the internal IP address where
+the application was detected
+* `name` [string]: Name of application detected
+* `time` [ISO date]: Timestamp of when this application was detected
+* `user` [string]: PCA ID of the user that was running the application detected
+* `version` [string]: Version of application detected
+
+### assessments Collection ###
+
+* `_id` [ObjectId]: PCA assessment (RV) ID
+* `customer` [string]: PCA customer identifier associated with this assessment
+* `end_time` [ISO date]: Date the final campaign in the assessment ended
+* `start_time` [ISO date]: Date the first campaign in the assessment started
+* `team_lead` [string]: Name of Federal lead for the assessment
+
+### campaigns Collection ###
+
+* `_id` [string]: Internal ID of phishing campaign
+* `assessment` [string]: ID of PCA assessment this campaign is part of
+* `customer` [string]: PCA customer identifier associated with this campaign
+* `end_time` [ISO date]: Timestamp when the campaign ended
+* `images` [dictionary]: Images associated with this campaign
+  * ``“landing-page”`` - Internal ID of landing page image
+  * ``“sent-email”`` - Internal ID of sent email image
+  * ``“link-warning”`` - Internal ID of link warning image
+* `start_time` [ISO date]: Timestamp when the campaign started
+* `subject` [string]: Subject used in the phishing email for this campaign
+* `template` [ObjectID]: ID of template associated with this campaign
+* `url` [string] : Phishing URL found within the email template
+* `users` [list of strings]: PCA IDs of the users phished in this campaign
+
+### clicks Collection ###
+
+* `_id` [ObjectId]: Internal database id of this click document
+* `assessment` [string]: ID of PCA assessment where this click was detected
+* `campaign` [string]:  ID of PCA campaign where this click was detected
+* `customer` [string]: PCA customer identifier associated with this assessment
+* `source_ip` [string]: IP address of the host that generated this click
+* `source_ip_int` [long integer]: Integer version of the IP address of the host
+that generated this click
+* `time` [ISO date]: Timestamp of when this click was detected
+* `user` [string]: PCA ID of the user that generated this click
+
+### customers Collection ###
+
+* `_id` [string]: PCA customer identifier
+* `acronym` [string]: PCA customer acronym
+* `name` [string]: PCA customer full name
+* `contacts` [list]: POC Contact Information
+* `email` [string]: Contact email address
+* `name` [string]: Contact name
+* `phone` [string]: Contact phone number
+* `type` [string]: Contact type (“TECHNICAL” or “DISTRO”)
+
+### emails Collection ###
+
+* `_id` [ObjectId]: Internal database id of this email document
+* `user` [string]: PCA ID of the user that this email was sent to
+* `customer` [string]: PCA customer identifier associated with this assessment
+* `assessment` [string]: ID of PCA assessment for which this email was generated
+* `campaign` [string]:  ID of PCA campaign for which this email was generated
+* `time` [ISO date]: Timestamp of when this email was sent
+* `status` [string]: Status message indicating if the email was successfully
+sent to the target
+
+### templates Collection ###
+
+* `_id` [ObjectId]: Internal database id of this template document
+* `name` [string]: Name of the template
+* `text` [string]: Content of the email template; should include subject, body,
+ etc; can be HTML
+* `appearance` [dictionary]: Appearance indicator ratings
+* `grammar` [integer]:
+  * 0: Poor
+  * 1: Decent
+  * 2: Proper
+* `link_domain` [integer]:
+  * 0: Completely fake/unrelated to the subject
+  * 1: Attempt to look like/related to a real domain
+* `logo_graphics` [integer]:
+  * 0: Completely fake/unrelated to the subject
+  * 1: Close imposters
+* `sender` [dictionary]: Sender indicator ratings
+* `external` [integer]:
+  * 0: Completely fake/unrelated to the subject
+  * 1: Looks like real external entities
+* `internal` [integer]:
+  * 0: Completely fake/unrelated to the subject
+  * 1: Looks like a possibly real internal person or group
+  * 2: Spoofs a real internal person or group
+* `authoritative` [integer]:
+  * 0: Not authoritative in nature
+  * 1: Sender is making a request or demand and speaks from a position of power
+   that could be associated with a corporate/local sender
+  * 2: Sender is making a request or demand and speaks from a position of power
+   that could be associated with a Federal/State office sender
+* `relevancy` [dictionary]: Relevancy indicator ratings
+* `organization` [integer]:
+  * 0: Content is not pertinent to organization’s current events, news, and does
+   not use the name/email of the targeted user
+  * 1: Content is pertinent to organization’s current events, news, or uses the
+   name/email of the targeted user
+* `public_news` [integer]:
+  * 0: Content is not pertinent to current events in the local area or nation
+  * 1: Content is pertinent to current events in the local area or nation
+* `behavior` [dictionary]: Behavior indicator ratings
+* `fear` [integer]:
+  * 0: Does not appeal to a sense of fear
+  * 1: Email contains scareware or appeals to the emotion of fear within the
+   theme of the email
+* `duty_obligation` [integer]:
+  * 0: Does not evoke a sense of duty or obligation
+  * 1: Email appeals to the sense of responsibility within the theme of the email
+* `curiosity` [integer]:
+  * 0: Does not evoke a sense of curiosity
+  * 1: Email appeals to the desire to learn more are within the theme of the email
+* `greed` [integer]:
+  * 0: Does not evoke a sense of greed
+  * 1: Email appeals to greed and monetary gain are within the theme of the email
+
+### users Collection ###
+
+* `_id` [ObjectId]: PCA ID of this user
+* `customer` [string]: PCA customer identifier that this user is associated with
+* `customer_defined_labels` [dictionary]: Customer-defined text labels for
+grouping users for statistical purposes
+
 ## scan Database ##
 
 ### certs Collection ###
@@ -837,239 +1073,3 @@ document for [trustymail](https://github.com/cisagov/trustymail).
 * `valid_spf` [boolean]: True if the SPF record found for the scanned
   domain is syntactically correct, per [RFC
   4408](https://www.ietf.org/rfc/rfc4408.txt)
-
-## assessment Database ##
-
-### assessments Collection ###
-
-* `_id` [ObjectId]: Assessment ID (RV0XXX for RVA/HVA/PCA or VR0XXX for VADR)
-* `appendix_a_signed_date` [ISO date]: Date Appendix A was signed
-* `appendix_a_signed` [boolean]: Was Appendix A signed?
-* `appendix_b_signed` [boolean]: Was Appendix B signed?
-* `assessment_completed` [ISO date]: Date when assessment was completed
-* `assessment_name` [string]: Assessment Name (Usually customer name and assessment
-  type)
-* `assessment_status` [string]: Assessment Status (Open -\> Planning -\>
-  Testing -\> Reporting -\> Wrap Up -\> Completed)
-* `assessment_summary` [string]: Assessment Summary (ASMT\_ID / ASMT\_NAME)
-* `assessment_type` [string]: Assessment Type (RVA, HVA, RPT, PCA, VADR)
-* `ci_systems` [list]: If any subsystems assessed belong to a different
-  critical infrastructure category from the `ci_type` field, it will be listed
-  here (For example, Hoover Dam would be `ci_type: CI_WATER` and
-  `ci_systems: [CI_ENERGY]` for electric)
-* `ci_type` [string]: Critical Infrastructure Type (Selected from among 16 CI
-  Sectors)
-* `contractor_count` [integer]: Number of contractors assigned
-* `created` [ISO date]: Date ticket was created
-* `draft_completed` [ISO date]: Date when draft report is sent to the
-  customer
-* `election` [boolean]: Is this assessment election-related?
-* `external_testing_begin` [ISO date]: Date of beginning of external testing
-* `external_testing_end` [ISO date]: Date of end of external testing
-* `fed_count` [integer]: Number of Federal operators assigned
-* `fed_lead` [string]: Federal Team Lead assigned to the assessment
-* `group_project` [string]: Group or Project
-* `internal_testing_begin` [ISO date]: Date of beginning of internal testing
-* `internal_testing_city` [string]: Location (city) of on-site testing, if
-  applicable
-* `internal_testing_end` [ISO date]: Date of end of internal testing
-* `last_change` [ISO date]: Last update date
-* `management_request` [string]: Management Request (DHS, NCCIC, EOP, FALSE)
-* `operators` [list]: List of operator names (contractor or federal)
-* `report_final_date` [integer]: Date when report is marked Final
-* `requested_services` [list]: NCATS services requested for this engagement
-* `roe_number` [integer]: ROE Number (assigned by NCATS)
-* `roe_signed` [boolean]: ROE Signed
-* `roe_signed_date` [ISO date]: Date ROE is signed
-* `sector` [string]: Fed/State/Local/Tribal/Territorial/Critical
-  Infrastructure
-* `stakeholder_id` [string]: TBD
-* `stakeholder_name` [string]: Stakeholder Name
-* `stakeholder_state` [string]: State where stakeholder is located
-* `testing_begin` [ISO date]: Date when all testing begins
-* `testing_complete` [ISO date]: Date on which all testing is completed
-* `testing_phase` [string]: Phase of Testing (External / Internal)
-
-### findings Collection ###
-
-* `_id` [ObjectId]: Unique key for DB to identify individual finding
-* `Assessment Type` [string]: Type of Assessment [RVA, HVA, RPT]
-* `CI Subtype` [string]: Identifies which of 16 Critical Infrastructure
-  sectors customer belongs to, if any
-* `Custom Finding Name` [string]: Custom name for finding identified by Fed
-  Team Lead, if applicable
-* `Default Finding Severity` [string]: Default level of severity for this type
-  of finding. Please see notes in Severity for more info on how Fed Team Leads
-  assign severity ratings.
-* `FED/SLTT/CI` [string]: Customer Sector
-* `FY` [string]: Fiscal Year during which testing was conducted. Due to
-  ever-changing cybersecurity landscape, more current data is recommended when
-  conducting analysis
-* `Int/Ext` [string]: Was the finding identified during Internal or External
-  testing?
-* `Man/Tool` [string]: Was the finding identified manually or with a tool
-  (Burp Suite, Cobalt Strike, Nessus, etc.) Tool will not be identified
-* `Mitigate Finding Response Date` [ISO date]: Date on which customer
-  responded with Mitigation data
-* `Mitigated Finding Status` [string]: Mitigation status as reported by
-  customer during 180-day mitigation survey. Note-survey is optional and
-  self-reported, no validation performed by NCATS that mitigations were
-  performed as stated. Please be careful using this metric.
-* `Name` [string]: Name of Finding
-* `NCATS ID` [integer]: Standard number assigned by NCATS to the Finding Name
-* `NCSF` [array]: This array will list which controls in the NICE
-  Cybersecurity Framework are applicable to the finding identified. This is a
-  more universal standard than NIST 800-53
-* `NIST 800-53` [array]: This array will list which controls in NIST 800-53
-  are applicable to the finding identified. As NIST 800-53 is a Federal
-  standard, this is more applicable for Federal customers
-* `RVA ID` [string]: Assessment ID during which finding was identified. Note -
-  this number identifies the customer when paired with information from
-  Assessments collection. This number is provided with Findings info to
-  identify unique assessments.
-* `Service` [string]: RVA service during which finding was identified
-* `Severity` [string]: Ranking of severity assigned by Fed Team Lead. Severity
-  can vary depending on importance of the system, or other environmental
-  factors [Low, Medium, High, Critical]
-* `Std Text Modify` [string]: Was there a custom Finding name provided?
-
-## PCA Database ##
-
-### applications Collection ###
-
-* `_id` [ObjectId]: Internal database id of this detected application
-* `assessment` [string]: ID of PCA assessment where this application was detected
-* `campaign` [string]:  ID of PCA campaign where this application was detected
-* `customer` [string]: PCA customer identifier associated with this assessment
-* `external_ip` [string]: External IP address of the host where the application
-was detected
-* `external_ip_int` [long integer]: Integer version of the external IP address
-where the application was detected
-* `internal_ip` [string]: Internal IP address of the host where the application
-was detected
-* `internal_ip_int` [string]: Integer version of the internal IP address where
-the application was detected
-* `name` [string]: Name of application detected
-* `time` [ISO date]: Timestamp of when this application was detected
-* `user` [string]: PCA ID of the user that was running the application detected
-* `version` [string]: Version of application detected
-
-### assessments Collection ###
-
-* `_id` [ObjectId]: PCA assessment (RV) ID
-* `customer` [string]: PCA customer identifier associated with this assessment
-* `end_time` [ISO date]: Date the final campaign in the assessment ended
-* `start_time` [ISO date]: Date the first campaign in the assessment started
-* `team_lead` [string]: Name of Federal lead for the assessment
-
-### campaigns Collection ###
-
-* `_id` [string]: Internal ID of phishing campaign
-* `assessment` [string]: ID of PCA assessment this campaign is part of
-* `customer` [string]: PCA customer identifier associated with this campaign
-* `end_time` [ISO date]: Timestamp when the campaign ended
-* `images` [dictionary]: Images associated with this campaign
-  * ``“landing-page”`` - Internal ID of landing page image
-  * ``“sent-email”`` - Internal ID of sent email image
-  * ``“link-warning”`` - Internal ID of link warning image
-* `start_time` [ISO date]: Timestamp when the campaign started
-* `subject` [string]: Subject used in the phishing email for this campaign
-* `template` [ObjectID]: ID of template associated with this campaign
-* `url` [string] : Phishing URL found within the email template
-* `users` [list of strings]: PCA IDs of the users phished in this campaign
-
-### clicks Collection ###
-
-* `_id` [ObjectId]: Internal database id of this click document
-* `assessment` [string]: ID of PCA assessment where this click was detected
-* `campaign` [string]:  ID of PCA campaign where this click was detected
-* `customer` [string]: PCA customer identifier associated with this assessment
-* `source_ip` [string]: IP address of the host that generated this click
-* `source_ip_int` [long integer]: Integer version of the IP address of the host
-that generated this click
-* `time` [ISO date]: Timestamp of when this click was detected
-* `user` [string]: PCA ID of the user that generated this click
-
-### customers Collection ###
-
-* `_id` [string]: PCA customer identifier
-* `acronym` [string]: PCA customer acronym
-* `name` [string]: PCA customer full name
-* `contacts` [list]: POC Contact Information
-* `email` [string]: Contact email address
-* `name` [string]: Contact name
-* `phone` [string]: Contact phone number
-* `type` [string]: Contact type (“TECHNICAL” or “DISTRO”)
-
-### emails Collection ###
-
-* `_id` [ObjectId]: Internal database id of this email document
-* `user` [string]: PCA ID of the user that this email was sent to
-* `customer` [string]: PCA customer identifier associated with this assessment
-* `assessment` [string]: ID of PCA assessment for which this email was generated
-* `campaign` [string]:  ID of PCA campaign for which this email was generated
-* `time` [ISO date]: Timestamp of when this email was sent
-* `status` [string]: Status message indicating if the email was successfully
-sent to the target
-
-### templates Collection ###
-
-* `_id` [ObjectId]: Internal database id of this template document
-* `name` [string]: Name of the template
-* `text` [string]: Content of the email template; should include subject, body,
- etc; can be HTML
-* `appearance` [dictionary]: Appearance indicator ratings
-* `grammar` [integer]:
-  * 0: Poor
-  * 1: Decent
-  * 2: Proper
-* `link_domain` [integer]:
-  * 0: Completely fake/unrelated to the subject
-  * 1: Attempt to look like/related to a real domain
-* `logo_graphics` [integer]:
-  * 0: Completely fake/unrelated to the subject
-  * 1: Close imposters
-* `sender` [dictionary]: Sender indicator ratings
-* `external` [integer]:
-  * 0: Completely fake/unrelated to the subject
-  * 1: Looks like real external entities
-* `internal` [integer]:
-  * 0: Completely fake/unrelated to the subject
-  * 1: Looks like a possibly real internal person or group
-  * 2: Spoofs a real internal person or group
-* `authoritative` [integer]:
-  * 0: Not authoritative in nature
-  * 1: Sender is making a request or demand and speaks from a position of power
-   that could be associated with a corporate/local sender
-  * 2: Sender is making a request or demand and speaks from a position of power
-   that could be associated with a Federal/State office sender
-* `relevancy` [dictionary]: Relevancy indicator ratings
-* `organization` [integer]:
-  * 0: Content is not pertinent to organization’s current events, news, and does
-   not use the name/email of the targeted user
-  * 1: Content is pertinent to organization’s current events, news, or uses the
-   name/email of the targeted user
-* `public_news` [integer]:
-  * 0: Content is not pertinent to current events in the local area or nation
-  * 1: Content is pertinent to current events in the local area or nation
-* `behavior` [dictionary]: Behavior indicator ratings
-* `fear` [integer]:
-  * 0: Does not appeal to a sense of fear
-  * 1: Email contains scareware or appeals to the emotion of fear within the
-   theme of the email
-* `duty_obligation` [integer]:
-  * 0: Does not evoke a sense of duty or obligation
-  * 1: Email appeals to the sense of responsibility within the theme of the email
-* `curiosity` [integer]:
-  * 0: Does not evoke a sense of curiosity
-  * 1: Email appeals to the desire to learn more are within the theme of the email
-* `greed` [integer]:
-  * 0: Does not evoke a sense of greed
-  * 1: Email appeals to greed and monetary gain are within the theme of the email
-
-### users Collection ###
-
-* `_id` [ObjectId]: PCA ID of this user
-* `customer` [string]: PCA customer identifier that this user is associated with
-* `customer_defined_labels` [dictionary]: Customer-defined text labels for
-grouping users for statistical purposes
