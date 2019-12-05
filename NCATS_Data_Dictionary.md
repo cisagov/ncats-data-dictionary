@@ -97,7 +97,8 @@ This information is organized by database and collection (table).
   applicable
 * `internal_testing_end` [ISO date]: Date of end of internal testing
 * `last_change` [ISO date]: Last update date
-* `management_request` [string]: Management Request (DHS, NCCIC, EOP, FALSE)
+* `management_request` [string/boolean]: Source (if any) for assessments
+  requested by management (DHS, NCCIC, EOP, false)
 * `mandated_category` [string/boolean]: Category (if any) for mandated
   assessments (Aviation, Elections, FERC, HI, Pipeline, EOP, false)
 * `operators` [list]: List of operator names (contractor or federal)
