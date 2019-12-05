@@ -98,6 +98,8 @@ This information is organized by database and collection (table).
 * `internal_testing_end` [ISO date]: Date of end of internal testing
 * `last_change` [ISO date]: Last update date
 * `management_request` [string]: Management Request (DHS, NCCIC, EOP, FALSE)
+* `mandated_category` [string/boolean]: Category (if any) for mandated
+  assessments (Aviation, Elections, FERC, HI, Pipeline, EOP, false)
 * `operators` [list]: List of operator names (contractor or federal)
 * `report_final_date` [integer]: Date when report is marked Final
 * `requested_services` [list]: NCATS services requested for this engagement
