@@ -114,7 +114,7 @@ This information is organized by database and collection (table).
 * `stakeholder_state` [string]: State where stakeholder is located
 * `testing_begin` [ISO date]: Date when all testing begins
 * `testing_complete` [ISO date]: Date on which all testing is completed
-* `testing_phase` [string]: Phase of Testing (External / Internal)
+* `testing_phase` [list]: The currently-active phase(s) of testing
 
 ### findings Collection ###
 
