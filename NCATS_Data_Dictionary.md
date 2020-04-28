@@ -251,8 +251,8 @@ CyHy stakeholders.
 ### notifications Collection ###
 
 The data in this collection is generated as part of Cyber Hygiene, whenever
-a new Critical-severity or High-severity [ticket](#tickets-collection)
-is created.
+a new [ticket](#tickets-collection) is created after detection of a Critical or
+High-severity vulnerability, or detection of a potentially-risky service.
 
 * `_id` [ObjectId]: Internal database id of this notification document
 * `generated_for` [list]: Organizations that have already generated a
