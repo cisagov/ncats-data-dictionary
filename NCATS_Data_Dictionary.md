@@ -1,6 +1,6 @@
 # NCATS Data Dictionary #
 
-## March 28, 2019 ##
+## April 28, 2020 ##
 
 This document provides a data dictionary for the data stored in the
 following NoSQL MongoDB databases:
@@ -251,8 +251,8 @@ CyHy stakeholders.
 ### notifications Collection ###
 
 The data in this collection is generated as part of Cyber Hygiene, whenever
-a new Critical-severity or High-severity [ticket](#tickets-collection)
-is created.
+a new [ticket](#tickets-collection) is created after detection of a Critical or
+High-severity vulnerability, or detection of a potentially-risky service.
 
 * `_id` [ObjectId]: Internal database id of this notification document
 * `generated_for` [list]: Organizations that have already generated a
@@ -474,6 +474,9 @@ CyHy stakeholders.
   * `name` [string]: Vulnerability name
   * `score_source` [string]: Source of the CVSS base score (e.g. "nvd" or
     "nessus")
+  * `service` [string]: Name of the service detected in this ticket; this field
+    is specific to tickets where the ticket `source` is a port scanner
+    (e.g. "nmap")
   * `severity` [decimal]: [CVSS v2.0 severity
     rating](https://nvd.nist.gov/vuln-metrics)
 * `events` [dictionary]: Details of key ticket events
@@ -511,7 +514,7 @@ CyHy stakeholders.
 * `protocol` [string]: Protocol for the vulnerable port in this ticket
   ("tcp" or "udp")
 * `snapshots` [list of ObjectIds]: Snapshots that include this ticket
-* `source` [string]: Source of the vulnerability scan (e.g. "nessus")
+* `source` [string]: Source of the vulnerability scan (e.g. "nessus" or "nmap")
 * `source_id` [integer]: Source-specific identifier for the
   vulnerability scan (e.g. the scanner plugin identifier that detected
   the vulnerability)
