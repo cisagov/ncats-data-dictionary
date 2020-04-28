@@ -474,6 +474,9 @@ CyHy stakeholders.
   * `name` [string]: Vulnerability name
   * `score_source` [string]: Source of the CVSS base score (e.g. "nvd" or
     "nessus")
+  * `service` [string]: Name of the service detected in this ticket; this field
+    is specific to tickets where the ticket `source` is a port scanner
+    (e.g. "nmap")
   * `severity` [decimal]: [CVSS v2.0 severity
     rating](https://nvd.nist.gov/vuln-metrics)
 * `events` [dictionary]: Details of key ticket events
@@ -511,7 +514,7 @@ CyHy stakeholders.
 * `protocol` [string]: Protocol for the vulnerable port in this ticket
   ("tcp" or "udp")
 * `snapshots` [list of ObjectIds]: Snapshots that include this ticket
-* `source` [string]: Source of the vulnerability scan (e.g. "nessus")
+* `source` [string]: Source of the vulnerability scan (e.g. "nessus" or "nmap")
 * `source_id` [integer]: Source-specific identifier for the
   vulnerability scan (e.g. the scanner plugin identifier that detected
   the vulnerability)
