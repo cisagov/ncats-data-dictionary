@@ -1,6 +1,6 @@
 # NCATS Data Dictionary #
 
-## March 28, 2019 ##
+## April 28, 2020 ##
 
 This document provides a data dictionary for the data stored in the
 following NoSQL MongoDB databases:
