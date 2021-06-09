@@ -49,6 +49,7 @@ This information is organized by database and collection (table).
 * [emails Collection](#emails-collection)
 * [templates Collection](#templates-collection)
 * [users Collection](#users-collection)
+* [user_reports Collection](#user_reports-collection)
 
 [scan Database:](#scan-database)
 
