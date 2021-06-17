@@ -742,6 +742,13 @@ sent to the target
 * `customer_defined_labels` [dictionary]: Customer-defined text labels for
 grouping users for statistical purposes
 
+### user_reports Collection ###
+* `customer` [string]: PCA customer identifier that this user_report is associated with
+* `assessment` [string]: PCA assessment identifier that this user_report is associated with
+* `campaign` [string]: PCA campaign identifier that this user_report is associated with
+* `first_report` [datetime]: Datetime for when the first user click is reported for a campaign
+* `total_num_reports` [integer]: The total number of clicks reported for a campaign
+
 ## scan Database ##
 
 ### certs Collection ###
