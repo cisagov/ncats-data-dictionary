@@ -748,7 +748,7 @@ sent to the target
 * `customer` [string]: PCA customer identifier that this user is associated with
 * `customer_defined_labels` [dictionary]: Customer-defined text labels for
 grouping users for statistical purposes
-  
+
 ## scan Database ##
 
 ### certs Collection ###
