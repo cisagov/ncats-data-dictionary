@@ -48,6 +48,7 @@ This information is organized by database and collection (table).
 * [customers Collection](#customers-collection)
 * [emails Collection](#emails-collection)
 * [templates Collection](#templates-collection)
+* [user_reports Collection](#user_reports-collection)
 * [users Collection](#users-collection)
 
 [scan Database:](#scan-database)
@@ -733,6 +734,13 @@ sent to the target
 * `greed` [integer]:
   * 0: Does not evoke a sense of greed
   * 1: Email appeals to greed and monetary gain are within the theme of the email
+
+### user_reports Collection ###
+* `assessment` [string]: PCA assessment identifier that this user_report is associated with
+* `campaign` [string]: PCA campaign identifier that this user_report is associated with  
+* `customer` [string]: PCA customer identifier that this user_report is associated with
+* `first_report` [ISO date]: Timestamp when the first user click is reported for a campaign
+* `total_num_reports` [integer]: The total number of clicks reported for a campaign
 
 ### users Collection ###
 
