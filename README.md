@@ -1,23 +1,10 @@
-# skeleton-generic #
+# ncats-data-dictionary #
 
-[![GitHub Build Status](https://github.com/cisagov/skeleton-generic/workflows/build/badge.svg)](https://github.com/cisagov/skeleton-generic/actions)
+[![GitHub Build Status](https://github.com/cisagov/ncats-data-dictionary/workflows/build/badge.svg)](https://github.com/cisagov/ncats-data-dictionary/actions)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) GitHub project started.
-This skeleton project contains [licensing information](LICENSE), as
-well as [pre-commit hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for the major languages that we use.
-
-In many cases you will instead want to use one of the more specific
-skeleton projects derived from this one.
-
-## New Repositories from a Skeleton ##
-
-Please see our [Project Setup guide](https://github.com/cisagov/development-guide/tree/develop/project_setup)
-for step-by-step instructions on how to start a new repository from
-a skeleton. This will save you time and effort when configuring a
-new repository!
+This repository contains information about the database schemas used in the
+[Cyber Hygiene (CyHy) system](https://github.com/cisagov/cyhy-system/). These
+schemas can be found in [`NCATS_Data_Dictionary.md`](NCATS_Data_Dictionary.md).
 
 ## Contributing ##
 
