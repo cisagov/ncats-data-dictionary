@@ -60,7 +60,7 @@ This information is organized by database and collection (table).
 - [sslyze\_scan Collection](#sslyze_scan-collection)
 - [trustymail Collection](#trustymail-collection)
 
-* * * * *
+---
 
 ## assessment Database ##
 
