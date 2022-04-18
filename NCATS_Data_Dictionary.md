@@ -259,7 +259,7 @@ Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog).
 
 - `_id` [string]: [Common Vulnerabilities and
   Exposures](https://cve.mitre.org/)
-  identifier for a Known Exploited Vulnerability
+  identifier for a Known Exploited Vulnerability (KEV)
 
 ### notifications Collection ###
 
