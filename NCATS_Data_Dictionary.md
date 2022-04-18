@@ -29,6 +29,7 @@ This information is organized by database and collection (table).
 - [cves Collection](#cves-collection)
 - [host\_scans Collection](#host_scans-collection)
 - [hosts Collection](#hosts-collection)
+- [kevs Collection](#kevs-collection)
 - [notifications Collection](#notifications-collection)
 - [places Collection](#places-collection)
 - [port\_scans Collection](#port_scans-collection)
@@ -248,6 +249,17 @@ CyHy stakeholders.
   - "READY" - Ready to be assigned to a scanner
   - "RUNNING" - Currently being scanned
   - "DONE" - Latest scan has completed
+
+### kevs Collection ###
+
+The data in this collection is derived from the
+[JSON feed](https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json)
+of the [CISA Known Exploited Vulnerabilities
+Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog).
+
+- `_id` [string]: [Common Vulnerabilities and
+  Exposures](https://cve.mitre.org/)
+  identifier for a Known Exploited Vulnerability
 
 ### notifications Collection ###
 
