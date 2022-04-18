@@ -484,6 +484,7 @@ CyHy stakeholders.
     Exposures](https://cve.mitre.org/) identifier
   - `cvss_base_score` [decimal]: [CVSS v2.0 base
     score](https://nvd.nist.gov/vuln-metrics)
+  - `kev` [boolean]: Is this ticket marked as a known exploited vulnerability?
   - `name` [string]: Vulnerability name
   - `score_source` [string]: Source of the CVSS base score (e.g. "nvd" or
     "nessus")
