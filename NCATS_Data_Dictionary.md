@@ -171,9 +171,10 @@ Database [CVE feeds](https://nvd.nist.gov/vuln/data-feeds).
 - `_id` [string]: [Common Vulnerabilities and
   Exposures](https://cve.mitre.org/)
   identifier
-- `cvss_score` [decimal]: [CVSS v2.0 base
+- `cvss_score` [decimal]: [CVSS base
   score](https://nvd.nist.gov/vuln-metrics)
-- `severity` [decimal]: [CVSS v2.0 severity
+- `cvss_version` [string]: CVSS version used for the CVSS base score
+- `severity` [decimal]: [CVSS severity
   rating](https://nvd.nist.gov/vuln-metrics)
 
 ### host\_scans Collection ###
@@ -482,8 +483,9 @@ CyHy stakeholders.
 - `details` [dictionary]: Vulnerability details
   - `cve` [string]: [Common Vulnerabilities and
     Exposures](https://cve.mitre.org/) identifier
-  - `cvss_base_score` [decimal]: [CVSS v2.0 base
+  - `cvss_base_score` [decimal]: [CVSS base
     score](https://nvd.nist.gov/vuln-metrics)
+  - `cvss_version` [string]: CVSS version used for the CVSS base score
   - `kev` [boolean]: Is this ticket marked as a Known Exploited Vulnerability (KEV)?
   - `name` [string]: Vulnerability name
   - `score_source` [string]: Source of the CVSS base score (e.g. "nvd" or
@@ -491,8 +493,10 @@ CyHy stakeholders.
   - `service` [string]: Name of the service detected in this ticket; this field
     is specific to tickets where the ticket `source` is a port scanner
     (e.g. "nmap")
-  - `severity` [decimal]: [CVSS v2.0 severity
+  - `severity` [decimal]: [CVSS severity
     rating](https://nvd.nist.gov/vuln-metrics)
+  - `vpr_score` [decimal]: Tenable
+    [Vulnerability Priority Rating](https://docs.tenable.com/nessus/Content/RiskMetrics.htm)
 - `events` [dictionary]: Details of key ticket events
   - `action` [string]: Event type
     - ``"OPENED"`` - Ticket opened for the first time
