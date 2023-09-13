@@ -177,7 +177,7 @@ Database [CVE feeds](https://nvd.nist.gov/vuln/data-feeds).
 - `severity` [decimal]: [CVSS severity
   rating](https://nvd.nist.gov/vuln-metrics)
 
-### host\_scans Collection ###
+### host_scans Collection ###
 
 The data in this collection is derived from IP addresses supplied by the
 CyHy stakeholders.
@@ -303,7 +303,7 @@ The data in this collection is derived from the "Government Units" and
   state where this place is
 - `state_name` [string]: Full name of the state where this place is
 
-### port\_scans Collection ###
+### port_scans Collection ###
 
 The data in this collection is derived from IP addresses supplied by the
 CyHy stakeholders.
@@ -542,7 +542,7 @@ CyHy stakeholders.
 - `time_opened` [ISO date]: Timestamp when this ticket was opened
   (vulnerability was first detected)
 
-### vuln\_scans Collection ###
+### vuln_scans Collection ###
 
 The data in this collection is derived from IP addresses supplied by the
 CyHy stakeholders.
@@ -834,7 +834,7 @@ a Cyber Hygiene stakeholder?
 - `scan_date` [ISO date]: Timestamp when the domain was inserted in the
   database
 
-### https\_scan Collection ###
+### https_scan Collection ###
 
 The data in this collection is derived from domain names collected by
 our [gatherer](https://github.com/cisagov/gatherer), which pulls in
@@ -963,7 +963,7 @@ document for
   where this certificate can be used.  These are extracted from the
   subjects field.
 
-### sslyze\_scan Collection ###
+### sslyze_scan Collection ###
 
 The data in this collection is derived from domain names collected by
 our [gatherer](https://github.com/cisagov/gatherer), which pulls in
