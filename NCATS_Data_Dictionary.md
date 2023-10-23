@@ -490,7 +490,7 @@ CyHy stakeholders.
   - `cvss_version` [string]: CVSS version used for the CVSS base score
   - `kev` [boolean]: Is the vulnerability in this ticket a Known Exploited
     Vulnerability (KEV), according to the [CISA KEV Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)?
-  - `known_ransomware` [boolean]: Is the vulnerability in this ticket known to
+  - `kev_ransomware` [boolean]: Is the vulnerability in this ticket known to
     have been leveraged as part of a ransomware campaign, according to the
     [CISA KEV Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)?
   - `name` [string]: Vulnerability name
