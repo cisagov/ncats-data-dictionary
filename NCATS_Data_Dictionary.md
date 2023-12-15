@@ -304,6 +304,14 @@ from [USGS](https://www.usgs.gov/us-board-on-geographic-names/download-gnis-data
 - `country` [string]: Two-letter abbreviation of the country where this
   place is
 - `country_name` [string]: Full name of the country where this place is
+- `latitude_dms` [string]: Latitude of this place, in degrees, minutes,
+  and seconds
+- `longitude_dms` [string]: Longitude of this place, in degrees,
+  minutes, and seconds
+- `latitude_dec` [decimal]: Latitude of this place, in decimal degrees
+- `longitude_dec` [decimal]: Longitude of this place, in decimal degrees
+- `elevation_meters` [integer]: Elevation of this place, in meters
+- `elevation_feet` [integer]: Elevation of this place, in feet
 
 ### port_scans Collection ###
 
