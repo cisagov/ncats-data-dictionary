@@ -385,6 +385,8 @@ stakeholders.
     "TRIBAL", "TERRITORIAL", "PRIVATE")
 - `children` [list of strings]: Identifiers of organizations that are
   children of this organization
+- `enrolled` [ISO date]: Timestamp when this organization was enrolled
+  in the Cyber Hygiene service
 - `init_stage` [string]: First scan stage for this organization
 - `key` [string]: Password used to encrypt reports for this organization
 - `networks` [list of strings]: CIDR blocks of IP addresses claimed by
