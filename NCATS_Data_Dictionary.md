@@ -200,7 +200,7 @@ CyHy stakeholders.
   with this scan
 - `snapshots` [list of ObjectIds]: Snapshots that include this scan
 - `source` [string]: Source of the scan (e.g. "nmap")
-- `time` [ISO date]: Timestamp when the scan occurred
+- `time` [ISO date]: Timestamp indicating when the scan occurred
 
 ### hosts Collection ###
 
@@ -210,9 +210,9 @@ CyHy stakeholders.
 - `_id` [long integer]: Integer version of this host document’s IP
   address
 - `ip` [string]: IP address corresponding to this host document
-- `last_change` [ISO date]: Timestamp of when this host document was
+- `last_change` [ISO date]: Timestamp indicating when this host document was
   last updated
-- `latest_scan` [dictionary]: Timestamps of last time host completed
+- `latest_scan` [dictionary]: Timestamps indicating last time host completed
   each scan stage
 - `loc` [list]: Longitude and latitude of host, according to geolocation
   database
@@ -227,7 +227,7 @@ CyHy stakeholders.
   - -1: No vulnerabilities detected on this host
   - 1: Host document represents a "dark space" IP address; i.e. live
     host not detected
-- `next_scan` [ISO date]: Timestamp of when this host document is
+- `next_scan` [ISO date]: Timestamp indicating when this host document is
   scheduled to be scanned next; a value of null indicates that the
   host document has a status other than "DONE" (i.e. currently queued
   up for a scan or running a scan)
@@ -328,7 +328,7 @@ CyHy stakeholders.
 - `state` [string]: State of the port, as reported by the scanner; see
   nmap states
   [here](https://nmap.org/book/man-port-scanning-basics.html)
-- `time` [ISO date]: Timestamp when the port was scanned
+- `time` [ISO date]: Timestamp indicating when the port was scanned
 
 ### reports Collection ###
 
@@ -336,8 +336,8 @@ The data in this collection is generated as part of Cyber Hygiene report
 creation process.
 
 - `_id` [ObjectId]: Internal database id of this report document
-- `generated_time` [ISO date]: Timestamp when this report or scorecard`
-  was generated
+- `generated_time` [ISO date]: Timestamp indicating when this report or
+  scorecard was generated
 - `owner` [string]: Organization that this report was created for; a
   value of null indicates that this report was a scorecard that
   contained results for multiple organizations
@@ -385,12 +385,14 @@ stakeholders.
     "TRIBAL", "TERRITORIAL", "PRIVATE")
 - `children` [list of strings]: Identifiers of organizations that are
   children of this organization
+- `enrolled` [ISO date]: Timestamp indicating when this organization was
+  enrolled in the Cyber Hygiene service
 - `init_stage` [string]: First scan stage for this organization
 - `key` [string]: Password used to encrypt reports for this organization
 - `networks` [list of strings]: CIDR blocks of IP addresses claimed by
   this organization
-- `period_start` [ISO date]: Timestamp when scanning can begin for this
-  organization
+- `period_start` [ISO date]: Timestamp indicating when scanning can begin for
+  this organization
 - `report_period` [string]: Frequency of reports; only current
   supported value is "WEEKLY"
 - `report_types` [list of strings]: Types of reports that this
@@ -423,9 +425,10 @@ CyHy stakeholders.
   this snapshot
 - `cvss_average_vulnerable` [decimal]: Average CVSS score of
   vulnerable hosts in this snapshot
-- `end_time` [ISO date]: Timestamp of the last scan in this snapshot
+- `end_time` [ISO date]: Timestamp indicating when the last scan in this
+   snapshot was completed
 - `host_count` [integer]: Number of hosts detected in this snapshot
-- `last_change` [ISO date]: Timestamp of when this snapshot document
+- `last_change` [ISO date]: Timestamp indicating when this snapshot document
   was last updated
 - `latest` [boolean]: Is this the latest snapshot for this organization?
 - `networks` [list of strings]: CIDR blocks claimed by the organization
@@ -438,7 +441,8 @@ CyHy stakeholders.
   snapshot
 - `services` [dictionary]: Number of services detected in this snapshot,
   grouped by service name
-- `start_time` [ISO date]: Timestamp of the first scan in this snapshot
+- `start_time` [ISO date]: Timestamp indicating when the first scan in this
+  snapshot was completed
 - `tix_msec_open`[dictionary]: Time a ticket has been open
 - `tix_msec_to_close`[dictionary]: Time it took to close a ticket
 - `unique_operating_systems` [integer]: Number of unique operating
@@ -473,7 +477,7 @@ CyHy stakeholders.
     "RUNNING" status for the given scan stage
     - `WAITING` [integer]: Number of hosts for this organization in
     "WAITING" status for the given scan stage
-  - `last_change` [ISO date]: Timestamp of when this tally document was
+  - `last_change` [ISO date]: Timestamp indicating when this tally document was
     last updated
 
 ### tickets Collection ###
@@ -516,7 +520,7 @@ CyHy stakeholders.
   - `reason` [string]: Short description of the event
   - `reference` [ObjectId]: The identifier for the vulnerability scan
     related to the event
-  - `time` [ISO date]: Timestamp of the event
+  - `time` [ISO date]: Timestamp indicating when the event occurred
   - `delta` [list of dictionaries]: Only applies to "CHANGED" events; list
   of what changed
     - `key` [string]: Ticket field that changed
@@ -526,7 +530,7 @@ CyHy stakeholders.
 - `ip` [string]: IP address of the host that was vulnerability scanned
 - `ip_int` [long integer]: Integer version of IP address that was
   vulnerability scanned
-- `last_change` [ISO date]: Timestamp of when this ticket document was
+- `last_change` [ISO date]: Timestamp indicating when this ticket document was
   last updated
 - `loc` [list]: Longitude and latitude of host (according to geolocation
   database) associated with this ticket
@@ -542,10 +546,10 @@ CyHy stakeholders.
 - `source_id` [integer]: Source-specific identifier for the
   vulnerability scan (e.g. the scanner plugin identifier that detected
   the vulnerability)
-- `time_closed` [ISO date]: Timestamp when this ticket was closed
+- `time_closed` [ISO date]: Timestamp indicating when this ticket was closed
   (vulnerability was no longer detected); value of null indicates that
   this ticket is currently open
-- `time_opened` [ISO date]: Timestamp when this ticket was opened
+- `time_opened` [ISO date]: Timestamp indicating when this ticket was opened
   (vulnerability was first detected)
 
 ### vuln_scans Collection ###
@@ -620,7 +624,7 @@ CyHy stakeholders.
   according to the vulnerability scanner
 - `source` [string]: Source of the vulnerability scan (e.g. "nessus")
 - `synopsis` [string]: Brief overview of the vulnerability
-- `time` [ISO date]: Timestamp when the vulnerability was detected
+- `time` [ISO date]: Timestamp indicating when the vulnerability was detected
 - `vuln_publication_date` [ISO date]: Vulnerability publication date
 - `xref` [string]: External reference
 
@@ -641,7 +645,7 @@ was detected
 - `internal_ip_int` [string]: Integer version of the internal IP address where
 the application was detected
 - `name` [string]: Name of application detected
-- `time` [ISO date]: Timestamp of when this application was detected
+- `time` [ISO date]: Timestamp indicating when this application was detected
 - `user` [string]: PCA ID of the user that was running the application detected
 - `version` [string]: Version of application detected
 
@@ -658,12 +662,12 @@ the application was detected
 - `_id` [string]: Internal ID of phishing campaign
 - `assessment` [string]: ID of PCA assessment this campaign is part of
 - `customer` [string]: PCA customer identifier associated with this campaign
-- `end_time` [ISO date]: Timestamp when the campaign ended
+- `end_time` [ISO date]: Timestamp indicating when the campaign ended
 - `images` [dictionary]: Images associated with this campaign
   - ``“landing-page”`` - Internal ID of landing page image
   - ``“sent-email”`` - Internal ID of sent email image
   - ``“link-warning”`` - Internal ID of link warning image
-- `start_time` [ISO date]: Timestamp when the campaign started
+- `start_time` [ISO date]: Timestamp indicating when the campaign started
 - `subject` [string]: Subject used in the phishing email for this campaign
 - `template` [ObjectID]: ID of template associated with this campaign
 - `url` [string] : Phishing URL found within the email template
@@ -678,7 +682,7 @@ the application was detected
 - `source_ip` [string]: IP address of the host that generated this click
 - `source_ip_int` [long integer]: Integer version of the IP address of the host
 that generated this click
-- `time` [ISO date]: Timestamp of when this click was detected
+- `time` [ISO date]: Timestamp indicating when this click was detected
 - `user` [string]: PCA ID of the user that generated this click
 
 ### customers Collection ###
@@ -699,7 +703,7 @@ that generated this click
 - `customer` [string]: PCA customer identifier associated with this assessment
 - `assessment` [string]: ID of PCA assessment for which this email was generated
 - `campaign` [string]:  ID of PCA campaign for which this email was generated
-- `time` [ISO date]: Timestamp of when this email was sent
+- `time` [ISO date]: Timestamp indicating when this email was sent
 - `status` [string]: Status message indicating if the email was successfully
 sent to the target
 
@@ -766,8 +770,8 @@ with
 with
 - `customer` [string]: PCA customer identifier that this user_report is associated
 with
-- `first_report` [ISO date]: Timestamp when the first user click is reported for
-a campaign
+- `first_report` [ISO date]: Timestamp indicating when the first user click is
+  reported for a campaign
 - `total_num_reports` [integer]: The total number of clicks reported for a campaign
 
 ### users Collection ###
@@ -797,9 +801,9 @@ document for
  certificate; see [RFC
  5280](https://tools.ietf.org/html/rfc5280%23section-4.1.2.4) for
  details
-- `not_after` [ISO date]: Timestamp when certificate expires
-- `not_before` [ISO date]: Timestamp when certificate became/becomes
-  valid
+- `not_after` [ISO date]: Timestamp indicating when the certificate expires
+- `not_before` [ISO date]: Timestamp indicating when the certificate
+  became/becomes valid
 - `pem` [string]: The certificate in [PEM
   format](https://tools.ietf.org/html/rfc1421)
 - `sct_exists` [boolean]: Whether or not the timestamp in
@@ -837,8 +841,8 @@ documents for [gatherer](https://github.com/cisagov/gatherer) and
   - `name` [string]: Organization name
 - `cyhy_stakeholder` [boolean]: Is the organization that claims to own this host
 a Cyber Hygiene stakeholder?
-- `scan_date` [ISO date]: Timestamp when the domain was inserted in the
-  database
+- `scan_date` [ISO date]: Timestamp indicating when the domain was inserted in
+  the database
 
 ### https_scan Collection ###
 
@@ -917,7 +921,7 @@ document for [pshtt](https://github.com/cisagov/pshtt).
   all endpoints are either redirects or down
 - `redirect_to` [string]: URI that the scanned domain redirects to (if
   redirect is True)
-- `scan_date` [ISO date]: Timestamp when the HTTPS scan was done
+- `scan_date` [ISO date]: Timestamp indicating when the HTTPS scan was done
 - `strictly_forces_https` [boolean]: True if one of the HTTPS
   endpoints (`https://<domain>`, `https://www.<domain>`) is live, and
   if both HTTP endpoints (`http://<domain>`, `http://www.<domain>`)
@@ -946,9 +950,9 @@ document for
   certificate; see [RFC
   5280](https://tools.ietf.org/html/rfc5280%23section-4.1.2.4) for
   details
-- `not_after` [ISO date]: Timestamp when certificate expires
-- `not_before` [ISO date]: Timestamp when certificate became/becomes
-  valid
+- `not_after` [ISO date]: Timestamp indicating when the certificate expires
+- `not_before` [ISO date]: Timestamp indicating when the certificate
+  became/becomes valid
 - `pem` [string]: The certificate in [PEM
   format](https://tools.ietf.org/html/rfc1421)
 - `sct_exists` [boolean]: Whether or not the timestamp in
@@ -1011,11 +1015,11 @@ document for [SSLyze](https://github.com/nabla-c0d3/sslyze).
 - `key_type` [string]: Public key type of certificate detected by
   SSLyze for scanned\_hostname
 - `latest` [boolean]: Is this the latest SSLyze scan of this host?
-- `not_after` [ISO date]: Timestamp when certificate for
+- `not_after` [ISO date]: Timestamp indicating when the certificate for
   scanned\_hostname expires
-- `not_before` [ISO date]: Timestamp when certificate for
+- `not_before` [ISO date]: Timestamp indicating when the certificate for
   scanned\_hostname became/becomes valid
-- `scan_date` [ISO date]: Timestamp when the SSLyze scan was done
+- `scan_date` [ISO date]: Timestamp indicating when the SSLyze scan was done
 - `scanned_hostname` [string]: The hostname that was scanned by SSLyze
 - `scanned_port` [integer]: The port number that was scanned by SSLyze
 - `sha1_in_construsted_chain` [boolean]: True if any certificates in
@@ -1103,7 +1107,7 @@ document for [trustymail](https://github.com/cisagov/trustymail).
   scanned domain
 - `mx_record` [boolean]: True if an MX record for the scanned domain
   was found that contains one or more mail servers
-- `scan_date` [ISO date]: Timestamp when the Trustymail scan was done
+- `scan_date` [ISO date]: Timestamp indicating when the Trustymail scan was done
 - `spf_results` [string]: Text representation of any SPF record found
   for the scanned domain
 - `syntax_errors` [string]: List of syntax errors encountered when
