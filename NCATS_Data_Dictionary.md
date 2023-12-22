@@ -307,9 +307,9 @@ for more information about the data in these fields.
   place is
 - `country_name` [string]: Full name of the country where this place is
 - `latitude_dms` [string]: Latitude of this place, in degrees, minutes,
-  and seconds
+  and seconds in the format DDMMSS(N/S)
 - `longitude_dms` [string]: Longitude of this place, in degrees,
-  minutes, and seconds
+  minutes, and seconds in the format DDDMMSS(E/W)
 - `latitude_dec` [decimal]: Latitude of this place, in decimal degrees
 - `longitude_dec` [decimal]: Longitude of this place, in decimal degrees
 - `elevation_meters` [integer]: Elevation of this place, in meters
