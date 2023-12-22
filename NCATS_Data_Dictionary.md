@@ -284,6 +284,8 @@ notification refers to
 The data in this collection is derived from the "Government Units" and
 "Populated Places" [Topical Gazetteers files](https://prd-tnm.s3.amazonaws.com/index.html?prefix=StagedProducts/GeographicNames/Archive/)
 from [USGS](https://www.usgs.gov/us-board-on-geographic-names/download-gnis-data).
+Please see the [`File formats for Domestic Geographic Names` document](https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/Archive/GNISFileFormats/Nat_State_Topic_File_formats_disclaimer.pdf)
+for more information about the data in these fields.
 
 - `_id` [long integer]: [Feature
   ID](https://www.usgs.gov/us-board-on-geographic-names/domestic-names) corresponding
