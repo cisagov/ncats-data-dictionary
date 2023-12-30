@@ -282,28 +282,38 @@ notification refers to
 ### places Collection ###
 
 The data in this collection is derived from the "Government Units" and
-"Populated Places" Topical Gazetteers files from
-[USGS](https://geonames.usgs.gov/domestic/download_data.htm).
+"Populated Places" [Topical Gazetteers files](https://prd-tnm.s3.amazonaws.com/index.html?prefix=StagedProducts/GeographicNames/Archive/)
+from [USGS](https://www.usgs.gov/us-board-on-geographic-names/download-gnis-data).
+Please see the [`File formats for Domestic Geographic Names` document](https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/Archive/GNISFileFormats/Nat_State_Topic_File_formats_disclaimer.pdf)
+for more information about the data in these fields.
 
-- `_id` [long integer]: [GNIS
-  ID](https://geonames.usgs.gov/domestic/index.html) corresponding to
-  this place
+- `_id` [long integer]: [Feature
+  ID](https://www.usgs.gov/us-board-on-geographic-names/domestic-names) corresponding
+  to this place
+- `name` [string]: Full name of this place
 - `class` [string]: Class of this place ("COUNTY", "STATE", "Populated
   Place", "Civil")
-- `country` [string]: Two-letter abbreviation of the country where this
-  place is
-- `country_name` [string]: Full name of the country where this place is
-- `county` [string]: Full name of the county where this place is
-- `county_fips` [string]: [FIPS
-  code](https://catalog.data.gov/dataset/fips-county-code-look-up-tool)
-  for the county where this place is
-- `name` [string]: Full name of this place
 - `state` [string]: Two-letter postal abbreviation of the state where
   this place is
 - `state_fips` [string]: [FIPS
-  code](https://catalog.data.gov/dataset/fips-state-codes) for the
-  state where this place is
+  code](https://www.census.gov/library/reference/code-lists/ansi.html#states)
+  for the state where this place is
 - `state_name` [string]: Full name of the state where this place is
+- `county` [string]: Full name of the county where this place is
+- `county_fips` [string]: [FIPS
+  code](https://www.census.gov/library/reference/code-lists/ansi.html#cou)
+  for the county where this place is
+- `country` [string]: Two-letter abbreviation of the country where this
+  place is
+- `country_name` [string]: Full name of the country where this place is
+- `latitude_dms` [string]: Latitude of this place, in degrees, minutes,
+  and seconds in the format DDMMSS(N/S)
+- `longitude_dms` [string]: Longitude of this place, in degrees,
+  minutes, and seconds in the format DDDMMSS(E/W)
+- `latitude_dec` [decimal]: Latitude of this place, in decimal degrees
+- `longitude_dec` [decimal]: Longitude of this place, in decimal degrees
+- `elevation_meters` [integer]: Elevation of this place, in meters
+- `elevation_feet` [integer]: Elevation of this place, in feet
 
 ### port_scans Collection ###
 
