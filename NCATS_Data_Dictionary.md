@@ -659,6 +659,10 @@ the application was detected
 - `user` [string]: PCA ID of the user that was running the application detected
 - `version` [string]: Version of application detected
 
+<!-- We have a duplicate header here, but there is nothing that can be
+done about it since the headers follow the database structure.  This
+is the reason we must disable the markdownlink rule below. -->
+<!-- markdownlint-disable-next-line MD024 -->
 ### assessments Collection ###
 
 - `_id` [ObjectId]: PCA assessment (RV) ID
