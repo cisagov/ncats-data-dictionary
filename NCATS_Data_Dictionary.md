@@ -1,13 +1,12 @@
 # NCATS Data Dictionary #
 
-## April 28, 2020 ##
+## July 23, 2025 ##
 
-This document provides a data dictionary for the data stored in the
-following NoSQL MongoDB databases:
+This document provides a data dictionary for assessment data produced by CISA:
 
-- `assessment` - Risk/Vulnerability Assessment (RVA) management data
+- `pentest` - Risk and Vulnerability Assessment (RVA), Remote Penetration Testing (RPT), and Federal Attack Surface Testing (FAST) data
 - `cyhy` - Cyber Hygiene port and vulnerability scanning
-- `pca` - Phishing Campaign Assessment management data
+- `pca` - Phishing Campaign Assessment management data (discontinued)
 - `scan`
   - Domains gathered from Cyber Hygiene, GSA, the End of Term Web
     Archive, or self-reported
@@ -19,10 +18,13 @@ following NoSQL MongoDB databases:
 
 This information is organized by database and collection (table).
 
-[assessment Database:](#assessment-database)
+[Updated: July 23, 2025](#updated-date)
 
-- [assessments Collection](#assessments-collection)
-- [findings Collection](#findings-collection)
+[Penetration Testing Data Set:](#pentest-dataset)
+
+- [pentest Collection](#pentest-collection)
+- [json key Relationship](#json-key-relationship)
+- [json example Structure](#json-example-structure)
 
 [Cyhy Database:](#cyhy-database)
 
@@ -63,103 +65,349 @@ This information is organized by database and collection (table).
 
 ---
 
-## assessment Database ##
+## Updated: July 23, 2025 ##
 
-### assessments Collection ###
+## Penetration Testing Data Set ##
 
-- `_id` [ObjectId]: Assessment ID (RV0XXX for RVA/HVA/PCA or VR0XXX for VADR)
-- `appendix_a_signed_date` [ISO date]: Date Appendix A was signed
-- `appendix_a_signed` [boolean]: Was Appendix A signed?
-- `appendix_b_signed` [boolean]: Was Appendix B signed?
-- `assessment_completed` [ISO date]: Date when assessment was completed
-- `assessment_name` [string]: Assessment Name (Usually customer name and assessment
-  type)
-- `assessment_status` [string]: Assessment Status (Open -\> Planning -\>
-  Testing -\> Reporting -\> Wrap Up -\> Completed)
-- `assessment_summary` [string]: Assessment Summary (ASMT\_ID / ASMT\_NAME)
-- `assessment_type` [string]: Assessment Type (RVA, HVA, RPT, PCA, VADR)
-- `ci_systems` [list]: If any subsystems assessed belong to a different
-  critical infrastructure category from the `ci_type` field, it will be listed
-  here (For example, Hoover Dam would be `ci_type: CI_WATER` and
-  `ci_systems: [CI_ENERGY]` for electric)
-- `ci_type` [string]: Critical Infrastructure Type (Selected from among 16 CI
-  Sectors)
-- `contractor_count` [integer]: Number of contractors assigned
-- `created` [ISO date]: Date ticket was created
-- `draft_completed` [ISO date]: Date when draft report is sent to the
-  customer
-- `election` [boolean]: Is this assessment election-related?
-- `external_testing_begin` [ISO date]: Date of beginning of external testing
-- `external_testing_end` [ISO date]: Date of end of external testing
-- `fed_count` [integer]: Number of Federal operators assigned
-- `fed_lead` [string]: Federal Team Lead assigned to the assessment
-- `group_project` [string]: Group or Project
-- `internal_testing_begin` [ISO date]: Date of beginning of internal testing
-- `internal_testing_city` [string]: Location (city) of on-site testing, if
-  applicable
-- `internal_testing_end` [ISO date]: Date of end of internal testing
-- `last_change` [ISO date]: Last update date
-- `management_request` [string/boolean]: Source (if any) for assessments
-  requested by management (DHS, NCCIC, EOP, false)
-- `mandated_category` [string/boolean]: Category (if any) for mandated
-  assessments (Aviation, Elections, FERC, HI, Pipeline, EOP, false)
-- `operators` [list]: List of operator names (contractor or federal)
-- `report_final_date` [integer]: Date when report is marked Final
-- `requested_services` [list]: NCATS services requested for this engagement
-- `roe_number` [integer]: ROE Number (assigned by NCATS)
-- `roe_signed` [boolean]: ROE Signed
-- `roe_signed_date` [ISO date]: Date ROE is signed
-- `sector` [string]: Fed/State/Local/Tribal/Territorial/Critical
-  Infrastructure
-- `stakeholder_id` [string]: TBD
-- `stakeholder_name` [string]: Stakeholder Name
-- `stakeholder_state` [string]: State where stakeholder is located
-- `testing_begin` [ISO date]: Date when all testing begins
-- `testing_complete` [ISO date]: Date on which all testing is completed
-- `testing_phase` [list]: The currently-active phase(s) of testing
+### pentest Collection ###
 
-### findings Collection ###
+- `type` [Text]: "Risk and Vulnerability Assessment (RVA)", "Remote Penetration Test (RPT)", or "Federal Attack Surface Testing (FAST)"
+- `id` [AlphaNumeric Text]: RV#### (pre-2024) or VMA####### (2024+)
+- `fiscal_year` [Number]: YYYY
+- `sector` [Text]: Selectable options include "Federal, State, Local, Tribal, Territorial, Private, Other"
+- `critical_infrastructure_sector` [Text]: Selectable list of 16 Critical Infrastructure areas
+- `critical_infrastructure_subsector` [Text]: Selectable list of Critical Infrastructure subsector areas
+- `testing_start_date` [ISO Date]: YYYY-MM-DD
+- `testing_completion_date` [ISO Date]: YYYY-MM-DD
+- `state` [Text]: Two-letter state/territory, selectable not fillable.
+- `findings`  [Object]:
+  - `total_findings` [Number]: number of total findings
+  - `original_risk_score` [Number]: Represents risk score prior to mitigations. If this field is not used the value will be "N/A".
+  - `mitigated_risk_score` [Number]: Represents risk score of mitigations applied. If this field is not used the value will be "N/A".
+  - `final_risk_score` [Number]: Represents original_risk_score minus mitigated_risk_score. If this field is not used the value will be "".
+  - `original_ransomware_score` [Number]: New feature being tested.
+  - `mitigated_ransomware_score` [Number]: New feature being tested.
+  - `final_ransomware_score` [Number]: New feature being tested.
+  - `individual_findings` [Array of Objects]:
+    - `finding_id` [Number]: Finding numerical representation placeholder within RVA Finding Repository.
+    - `finding_category` [Text]: Prior to Reporting Engine 2.0 this field was blank ""
+    - `general_finding_category` [Text]: Prior to Reporting Engine 2.0 this field was blank ""
+    - `specific_finding_name` [Text]: Selectable from list of findings. This field will always have a text value.
+    - `severity` [Text]: Selectable from "Critical, High, Medium, Low, Informational"
+    - `location` [Text]: Selectable from list of services offered. Either External, Internal, or "Internal/External."
+    - `date_generated` [Number]: YYYY-MM-DD
+    - `kev` [Boolean]: True/False.
+    - `affected_systems` [Array of Objects]:
+      - `uid` [AlphaNumeric]: Human does not input this. This is filled automatically generated and represents a unique instance of the finding. Avoids finding duplication. Permits nuanced tracking of vulnerable conditions.
+      - `mitigation_status` [Text]: Prior to September 2023 this field is  "N/A", After 2023 this field is "Not Mitigated."
+      - `date_of_mitigation` [ISO Date]: YYYY-MM-DD. If no remediation is set field is "".
 
-- `_id` [ObjectId]: Unique key for DB to identify individual finding
-- `Assessment Type` [string]: Type of Assessment [RVA, HVA, RPT]
-- `CI Subtype` [string]: Identifies which of 16 Critical Infrastructure
-  sectors customer belongs to, if any
-- `Custom Finding Name` [string]: Custom name for finding identified by Fed
-  Team Lead, if applicable
-- `Default Finding Severity` [string]: Default level of severity for this type
-  of finding. Please see notes in Severity for more info on how Fed Team Leads
-  assign severity ratings.
-- `FED/SLTT/CI` [string]: Customer Sector
-- `FY` [string]: Fiscal Year during which testing was conducted. Due to
-  ever-changing cybersecurity landscape, more current data is recommended when
-  conducting analysis
-- `Int/Ext` [string]: Was the finding identified during Internal or External
-  testing?
-- `Man/Tool` [string]: Was the finding identified manually or with a tool
-  (Burp Suite, Cobalt Strike, Nessus, etc.) Tool will not be identified
-- `Mitigate Finding Response Date` [ISO date]: Date on which customer
-  responded with Mitigation data
-- `Mitigated Finding Status` [string]: Mitigation status as reported by
-  customer during 180-day mitigation survey. Note-survey is optional and
-  self-reported, no validation performed by NCATS that mitigations were
-  performed as stated. Please be careful using this metric.
-- `Name` [string]: Name of Finding
-- `NCATS ID` [integer]: Standard number assigned by NCATS to the Finding Name
-- `NCSF` [array]: This array will list which controls in the NICE
-  Cybersecurity Framework are applicable to the finding identified. This is a
-  more universal standard than NIST 800-53
-- `NIST 800-53` [array]: This array will list which controls in NIST 800-53
-  are applicable to the finding identified. As NIST 800-53 is a Federal
-  standard, this is more applicable for Federal customers
-- `RVA ID` [string]: Assessment ID during which finding was identified. Note -
-  this number identifies the customer when paired with information from
-  Assessments collection. This number is provided with Findings info to
-  identify unique assessments.
-- `Service` [string]: RVA service during which finding was identified
-- `Severity` [string]: Ranking of severity assigned by Fed Team Lead. Severity
-  can vary depending on importance of the system, or other environmental
-  factors [Low, Medium, High, Critical]
-- `Std Text Modify` [string]: Was there a custom Finding name provided?
+    - `mitigation_status` [Text]: Prior to September 2023 this field is  "N/A", After 2023 this field is "No Action Taken."
+    - `date_of_mitigation` [ISO Date]: YYYY-MM-DD. If no remediation is set field is "".
+    - `mitigation_action` [Text]: Fillable and supplied by the customer. If no remediation is set field is "".
+    - `mitigation_challenge` [Text]: Fillable and supplied by the customer. If no remediation is set field is "".
+    - `cis_csc` List of numbers. Comma separated numbers relating to the Center for Internet Security Security Critical Security Controls.
+    - `cmmc` [Empty]: Not used. Hold over field from prior data versions.
+    - `nist_800_53` [Data]:
+    - `nist_csf`  [Data]:
+    - `finding_risk_score` [Number]: Represents risk score of specific finding.
+    - `ransomware_tactics`  [Array]: Specific ransomware tactics the finding pertains to. Could be one or more of the following: Initial Access, Data Access, Lateral Movement, Privilege Escalation.
+
+- `phishing_assessment` [Object]:
+  - `date_generated`  [ISO Date]: YYYY-MM-DD
+  - `phishing_assessment_date`  [ISO Date]: YYYY-MM-DD
+  - `security_solutions`  [Array]: RVA records what host-based AV and EDR products were present at the time of testing.
+  - `campaigns` [Array of Objects]: Only set if present. Otherwise campaigns is empty.
+    - `emails_sent` [Number]:
+    - `emails_delivered` [Number]:
+    - `total_clicks` [Number]:
+    - `unique_clicks` [Number]:
+    - `time_to_first_click` [Number]: HH:MM:SS.
+    - `users_exploited` [Number]:
+    - `length_of_campaign` [Number]: Duration of days.
+    - `credentials_harvested` [Number]: Unique user credentials.
+  - `payloads` [Array of Objects]:
+    - `payload_description` [Text]: Fillable field.
+    - `c2_protocol` [Text]: Selectable text, not fillable.
+    - `border_protection` [Text]: B/N. B=blocked. N=Not Blocked.
+    - `host_protection` [Text]: B/N. B=blocked. N=Not Blocked.
+    - `command` [Text]: Fillable. Command and control (C2) tool name.
+    - `code_type` [null]: Field no longer utilized.
+    - `techniques` [Object]: The technique object is filled from the "filename" and designed to provide context around what actions the payload performs through the Mitre ATT&CK framework.
+    - `file_types` [Text]: Type of code which the payload ran.
+    - `filename`  [AlphaNumeric]: Human does not input this. This is filled automatically from the descriptive payload input by the human. Provides consistency in file naming and context.
+- `attack_paths` [Object]:
+  - `total_attack_paths` [Number]: Describes total number of unique ways the RVA team discovered to go from little to no access to elevated privileges.
+  - `paths` [Array of Objects]:
+    - `location` [Text]: External/Internal/Phishing. Selectable, not user input.
+    - `mitre_techniques` [Array of Objects]: Lists all the ATT&CK techniques utilized. Pen Test Portal (PTP) 1.5.2 only lists a single attack_path and all mitre_techniques align to the single path, however many RVAs discover multiple paths. Starting with Reporting Engine 2.0 multiple unique attack_paths are allowed to be entered and in RE 2.0 the mitre_techniques will only list the techniques that apply to that single path.
+    - `tools_used` [Array]: Contains names of tools used for the attack path.
+- `known_exploited_vulnerabilities` [Object]:
+  - `total_kevs` [Number]:
+  - `kevs` [Array]: List of KEV CVE in format "CVE-####-#####."
+- `data_exfiltration` [Object]: Reporting Engine 2.0+ includes this reportable element in the JSON. Prior to RE 2.0 JSONs did not include this.
+  - `total_vulnerable_protocols` [Number]:
+  - `results` [Array of Objects]:
+    - `protocol` [Text]:
+    - `data_type` [Text]: Type of data.
+    - `detection` [Text]: "Detected" or "Not Detected."
+    - `prevention` [Text]: "Blocked" or "Not Blocked."
+- `external_port_mapping` [Object]: Reporting Engine 2.0+ includes this reportable element in the JSON. Prior to RE 2.0 JSONs did not include this.
+  - `total_ports_open` [Number]:
+  - `open_ports` [Array]: List of port numbers and their associated protocol.
+
+### JSON Key Relationship ###
+
+Top-Level JSON Keys:
+```
+[
+  "attack_paths",
+  "critical_infrastructure_sector",
+  "critical_infrastructure_subsector",
+  "data_exfiltration",
+  "external_port_mapping",
+  "findings",
+  "fiscal_year",
+  "id",
+  "known_exploited_vulnerabilities",
+  "phishing_assessment",
+  "sector",
+  "state",
+  "testing_completion_date",
+  "testing_start_date",
+  "type"
+]
+```
+
+"findings" JSON Keys:
+```
+[
+  "final_ransomware_score",
+  "final_risk_score",
+  "individual_findings",
+  "mitigated_ransomware_score",
+  "mitigated_risk_score",
+  "original_ransomware_score",
+  "original_risk_score",
+  "total_findings"
+]
+```
+
+"known_exploited_vulnerabilities" JSON Keys:
+```
+[
+  "kevs",
+  "total_kevs"
+]
+```
+
+"attack_paths" JSON Keys:
+```
+[
+  "paths",
+  "total_attack_paths"
+]
+```
+
+"phishing_assessment" JSON Keys:
+```
+[
+  "campaigns",
+  "date_generated",
+  "payloads",
+  "phishing_assessment_date",
+  "security_solutions"
+]
+```
+
+"data_exfiltration" JSON Keys:
+```
+[
+  "results",
+  "total_vulnerable_protocols"
+]
+```
+
+"external_port_mapping" JSON Keys: 
+```
+[
+  "open_ports",
+  "total_open_ports"
+]
+```
+
+### JSON Example Data ###
+
+The following is ficticious data input to show the full JSON data structure. 
+
+```
+{
+  "type": "Risk and Vulnerability Assessment (RVA)",
+  "id": "VMA0001234",
+  "fiscal_year": 2025,
+  "sector": "State",
+  "critical_infrastructure_sector": "Government Facilities",
+  "critical_infrastructure_subsector": "",
+  "testing_start_date": "2025-07-23",
+  "testing_completion_date": "2025-07-23",
+  "state": "ND",
+  "findings": {
+    "total_findings": 12,
+    "original_risk_score": 900,
+    "mitigated_risk_score": 900,
+    "final_risk_score": "",
+    "original_ransomware_score": 56,
+    "mitigated_ransomware_score": 56,
+    "final_ransomware_score": "",
+    "individual_findings": [
+      {
+        "finding_id": 10,
+        "finding_category": "Active Directory Weakness",
+        "general_finding_name": "Insecure Account Configuration",
+        "specific_finding_name": "Excessive Group Permissions",
+        "severity": "High",
+        "location": "Internal",
+        "date_generated": "2025-07-23",
+        "last_validated": "N/A",
+        "kev": false,
+        "affected_systems": [
+          {
+            "uid": "fea0fe80a3noiVNOA",
+            "mitigation_status": "Not Mitigated",
+            "mitigation_date": ""
+          }
+        ],
+        "mitigation_status": "No Action Taken",
+        "date_of_mitigation": "",
+        "mitigation_action": "",
+        "mitigation_challenge": "",
+        "cis_csc": "3, 5, 6, 14, 16",
+        "cmmc": "",
+        "nist_800_53": "AC-1, AC-2, AC-3, AC-5, AC-6, AC-14, AC-16, AC-24, AT-3, PM-13",
+        "nist_csf": "PR.AC-4, PR.AT-2",
+        "finding_risk_score": 76,
+        "ransomware_tactics": [
+          "Data Access",
+          "Lateral Movement"
+        ]
+      }
+    ]
+  },
+  "phishing_assessment": {
+    "date_generated": "2025-07-23",
+    "phishing_assessment_date": "",
+    "security_solutions": [
+      "Vendor1",
+      "Vendor2"
+    ],
+    "campaigns": [
+      {
+        "emails_sent": 200,
+        "emails_delivered": 200,
+        "total_clicks": 100,
+        "unique_clicks": 100,
+        "time_to_first_click": "0:37:00",
+        "users_exploited": "N/A",
+        "length_of_campaign": 1,
+        "credentials_harvested": 75
+      }
+    ],
+    "payloads": [
+      {
+        "payload_description": "01-SomeTextHere.exe",
+        "c2_protocol": "HTTPS",
+        "border_protection": "B",
+        "host_protection": "N",
+        "command": "C2 Name Here",
+        "code_type": null,
+        "techniques": {
+          "1204.002": {
+            "name": "User Execution: Malicious File",
+            "tactics": {
+              "TA0002": "Execution"
+            }
+          },
+          "1553.005": {
+            "name": "Subvert Trust Controls: Mark-of-the-Web Bypass",
+            "tactics": {
+              "TA0005": "Defense Evasion"
+            }
+          },
+          "1106": {
+            "name": "Native API",
+            "tactics": {
+              "TA0002": "Execution"
+            }
+          },
+          "1071.001": {
+            "name": "Application Layer Protocol: Web Protocols",
+            "tactics": {
+              "TA0011": "Command and Control"
+            }
+          }
+        },
+        "file_types": "ISO",
+        "filename": "ISO-1204.002-1553.005-1106-1071.001"
+      }
+    ]
+  },
+  "attack_paths": {
+    "total_attack_paths": 1,
+    "paths": [
+      {
+        "location": "Internal Narrative",
+        "mitre_techniques": [
+          {
+            "id": "T1040",
+            "tactic": "Credential Access, Discovery",
+            "name": "Network Sniffing",
+            "is_subtechnique": false
+          },
+        ],
+        "tools_used": [
+          "ToolName-1",
+          "ToolName-2"
+        ]
+      }
+    ]
+  },
+  "known_exploited_vulnerabilities": {
+    "total_kevs": 2,
+    "kevs": [
+      "CVE-2025-00000",
+      "CVE-2025-00001"
+    ]
+  },
+  "data_exfiltration": {
+    "total_vulnerable_protocols": 2,
+    "results": [
+      {
+        "protocol": "HTTP",
+        "data_type": "Social Security Numbers (10 MB)",
+        "detection": "Not Detected",
+        "prevention": "Not Blocked"
+      },
+      {
+        "protocol": "FTP",
+        "data_type": "Social Security Numbers (10 MB)",
+        "detection": "Not Detected",
+        "prevention": "Not Blocked"
+      }
+
+    ]
+  },
+  "external_port_mapping": {
+    "total_open_ports": 0,
+    "open_ports": [
+      "443/tcp",
+      "21/tcp",
+      "22/tcp"
+    ]
+  }
+}
+```
+
+### phishing Collection ###
 
 ## Cyhy Database ##
 
