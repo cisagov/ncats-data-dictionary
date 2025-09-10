@@ -187,7 +187,7 @@ CyHy stakeholders.
 - `classes` [list of dictionaries]: Guesses for OS class (comes
   directly from scanner; see nmap details
   [here](https://nmap.org/book/app-nmap-dtd.html))
-- `hostname` [string]: Hostname, if one was detected
+- `hostname` [string] (Optional): Hostname, if one was detected
 - `ip` [string]: IP address that was scanned
 - `ip_int` [long integer]: Integer version of IP address that was scanned
 - `latest` [boolean]: Is this the latest scan of this host?
@@ -209,6 +209,11 @@ CyHy stakeholders.
 
 - `_id` [long integer]: Integer version of this host document’s IP
   address
+- `hostnames` [dictionary] (Optional): Map of hostnames and the organization
+  that "owns" the hostname in Cyber Hygiene
+  - `hostname` [string]: A hostname associated with this host document's
+    IP address
+  - `owner` [string]: CyHy organization that "owns" the hostname
 - `ip` [string]: IP address corresponding to this host document
 - `last_change` [ISO date]: Timestamp indicating when this host document was
   last updated
@@ -321,6 +326,7 @@ The data in this collection is derived from IP addresses supplied by the
 CyHy stakeholders.
 
 - `_id` [ObjectId]: Internal database id of this port scan document
+- `hostname` [string] (Optional): Hostname, if one was detected
 - `ip` [string]: IP address of the host that was port scanned
 - `ip_int` [long integer]: Integer version of IP address that was port
   scanned
@@ -397,6 +403,8 @@ stakeholders.
   children of this organization
 - `enrolled` [ISO date]: Timestamp indicating when this organization was
   enrolled in the Cyber Hygiene service
+- `hostnames` [list of strings] (Optional): Hostnames claimed by this
+  organization
 - `init_stage` [string]: First scan stage for this organization
 - `key` [string]: Password used to encrypt reports for this organization
 - `networks` [list of strings]: CIDR blocks of IP addresses claimed by
@@ -443,6 +451,9 @@ CyHy stakeholders.
 - `end_time` [ISO date]: Timestamp indicating when the last scan in this
   snapshot was completed
 - `host_count` [integer]: Number of hosts detected in this snapshot
+- `hostnames` [list of strings] (Optional): Hostnames claimed by the
+  organization (and any included descendants) at the time this snapshot was
+  generated
 - `last_change` [ISO date]: Timestamp indicating when this snapshot document
   was last updated
 - `latest` [boolean]: Is this the latest snapshot for this organization?
@@ -547,6 +558,7 @@ CyHy stakeholders.
     - `from` [type depends on key]: Value of key before the "CHANGED" event
     - `to` [type depends on key]: Value of key after the "CHANGED" event
 - `false_positive` [boolean]: Is this ticket marked as a false positive?
+- `hostname` [string] (Optional): Hostname, if one was detected
 - `ip` [string]: IP address of the host that was vulnerability scanned
 - `ip_int` [long integer]: Integer version of IP address that was
   vulnerability scanned
@@ -601,6 +613,7 @@ CyHy stakeholders.
   the vulnerability scanner
 - `fname` [string]: Filename of the vulnerability scanner plugin that
   detected this vulnerability
+- `hostname` [string] (Optional): Hostname, if one was detected
 - `ip` [string]: IP address of the host that was vulnerability scanned
 - `ip_int` [long integer]: Integer version of IP address that was
   vulnerability scanned
