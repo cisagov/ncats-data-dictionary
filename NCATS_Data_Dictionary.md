@@ -185,8 +185,7 @@ CyHy stakeholders.
 - `_id` [ObjectId]: Internal database id of this host scan document
 - `accuracy` [integer]: Confidence rating by scanner in OS class guess
 - `classes` [list of dictionaries]: Guesses for OS class (comes
-  directly from scanner; see nmap details
-  [here](https://nmap.org/book/app-nmap-dtd.html))
+  directly from scanner; see [nmap details](https://nmap.org/book/app-nmap-dtd.html))
 - `hostname` [string] (Optional): Hostname, if one was detected
 - `ip` [string]: IP address that was scanned
 - `ip_int` [long integer]: Integer version of IP address that was scanned
@@ -342,8 +341,7 @@ CyHy stakeholders.
 - `snapshots` [list of ObjectIds]: Snapshots that include this port scan
 - `source` [string]: Source of the scan (e.g. "nmap")
 - `state` [string]: State of the port, as reported by the scanner; see
-  nmap states
-  [here](https://nmap.org/book/man-port-scanning-basics.html)
+  [nmap states](https://nmap.org/book/man-port-scanning-basics.html)
 - `time` [ISO date]: Timestamp indicating when the port was scanned
 
 ### reports Collection ###
