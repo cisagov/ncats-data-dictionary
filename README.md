@@ -1,6 +1,8 @@
 # ncats-data-dictionary #
 
 [![GitHub Build Status](https://github.com/cisagov/ncats-data-dictionary/workflows/build/badge.svg)](https://github.com/cisagov/ncats-data-dictionary/actions)
+[![License](https://img.shields.io/github/license/cisagov/ncats-data-dictionary)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/ncats-data-dictionary/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ncats-data-dictionary/actions/workflows/codeql-analysis.yml)
 
 This repository contains information about the database schemas used in the
 [Cyber Hygiene (CyHy) system](https://github.com/cisagov/cyhy-system/). These
