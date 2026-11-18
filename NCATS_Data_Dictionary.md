@@ -195,6 +195,9 @@ CyHy stakeholders.
   from scanner)
 - `owner` [string]: Organization that claims the IP address associated
   with this scan
+- `silent_port_count` [integer] (Optional): Number of ports on this host
+  whose service was detected as
+  ["tcpwrapped"](https://secwiki.org/w/FAQ\_tcpwrapped) during this scan
 - `snapshots` [list of ObjectIds]: Snapshots that include this scan
 - `source` [string]: Source of the scan (e.g. "nmap")
 - `time` [ISO date]: Timestamp indicating when the scan occurred
@@ -339,7 +342,10 @@ CyHy stakeholders.
 - `snapshots` [list of ObjectIds]: Snapshots that include this port scan
 - `source` [string]: Source of the scan (e.g. "nmap")
 - `state` [string]: State of the port, as reported by the scanner; see
-  [nmap states](https://nmap.org/book/man-port-scanning-basics.html)
+  [nmap states](https://nmap.org/book/man-port-scanning-basics.html);
+  ports whose service was detected as "tcpwrapped" are counted in the
+  `host_scans` collection's `silent_port_count` instead of being stored
+  here, although older port scans may record them with a state of "silent"
 - `time` [ISO date]: Timestamp indicating when the port was scanned
 
 ### reports Collection ###
